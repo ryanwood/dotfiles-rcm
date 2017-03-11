@@ -1,5 +1,5 @@
-[submodule ".zim"]
-	path = .zim
+[submodule "zim"]
+	path = zim
 	url = git@github.com:Eriner/zim.git
 [submodule "janus/badwolf"]
 	path = janus/badwolf
