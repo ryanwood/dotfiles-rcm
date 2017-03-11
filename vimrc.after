@@ -1,0 +1,150 @@
+"
+" General Settings
+"
+set hidden
+" set t_Co=256
+
+syntax enable
+
+set background=dark
+
+" Required for iTerm2 for solarized to work when solarized colors loaded
+" let g:solarized_termcolors=256
+" " let g:solarized_visibility = "high"
+" " let g:solarized_contrast = "high"
+" colorscheme solarized
+
+" colorscheme vividchalk
+" colorscheme molokai
+colorscheme badwolf
+
+set clipboard=unnamed
+
+" Fix delay when writing a file caused by Janus
+" cunmap w!!
+
+" GRB: Put useful info in status line
+" set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+" hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+
+" set winwidth=79
+
+"
+" Folding settings
+"
+
+set foldmethod=syntax   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
+" set foldlevelstart=10
+
+" http://vimcasts.org/episodes/how-to-fold/
+nnoremap <space> zA
+
+" au WinLeave * set nocursorline " nocursorcolumn
+" au WinEnter * set cursorline " cursorcolumn
+" set cursorline " cursorcolumn
+
+" hi cursorline guibg=#999 " highlight bg color of current line
+" hi CursorColumn guibg=#333333   " highlight cursor
+
+"
+" Mappings
+"
+
+" easy window switching
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-x> <c-w>x
+
+nnoremap <leader>ev :vsp $MYVIMRC.after<CR>
+nnoremap <leader>evb :vsp $MYVIMRC.before<CR>
+nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader><space> :noh<CR>
+
+set splitbelow
+set splitright
+
+" GRB: clear the search buffer when hitting return
+" nnoremap <CR> :nohlsearch<CR>
+nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>
+
+map <leader>fn :NERDTreeFind<cr>
+map <leader>ff :NERDTreeMirror<cr>
+
+" Toggle to last file used
+" nnoremap <leader><leader> <c-^>
+
+" nmap <space> :
+" map <leader>r :Rename
+
+nmap <leader>kk :%s/ \+$//g<cr>
+nmap <leader>kl :%s/<C-v><C-m>//g<cr>
+" nmap <silent> <leader>kl :%s/ \+$//g<cr><cr>\|:%s/<C-v><C-m>//g<cr><cr>:w<cr>
+
+" "Very magic" regexes in searches
+" nnoremap / /\v
+" nnoremap ? ?\v
+
+map <c-s> :%s/\v
+
+" Taken from Gary Bernhardt
+" https://github.com/garybernhardt/dotfiles/master/.vimrc
+function! PromoteToLet()
+  :normal! dd
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>p :PromoteToLet<cr>
+
+" HashRocket
+imap <c-l> <space>=><space>
+
+" Simple comments for tComment
+" map <D-/> :TComment<cr>
+" imap <D-/> <esc>:TComment<cr>i
+
+" Alternate ESC key
+imap <s-cr> <esc>
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+
+" call tcomment#DefineType('slim', '/ %s')
+" call tcomment#DefineType('skim', '/ %s')
+" au BufNewFile,BufRead *.skim set filetype=slim
+
+nmap <leader>s :w<cr><esc>
+
+" Delete trailing spaces
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfun
+
+nnoremap <silent> <F4> :call <SID>StripTrailingWhitespaces()<CR>
+
+autocmd BufWritePre *.rb,*.js,*.jsx,*.coffee :call <SID>StripTrailingWhitespaces()
+
+" Delete buffer but keep window
+" http://stackoverflow.com/questions/4298910/vim-close-buffer-but-not-split-window
+nmap <leader>d :bp<bar>bd#<CR>
