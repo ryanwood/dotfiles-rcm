@@ -59,7 +59,3 @@ _load_settings "$HOME/.zsh/configs"
 for alias in ~/.zsh/aliases/*; do
   source $alias
 done
-
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby 2.3.1
