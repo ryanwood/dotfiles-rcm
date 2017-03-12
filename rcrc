@@ -1,2 +1,2 @@
 EXCLUDES="README.md"
-SYMLINK_DIRS="zim zsh janus"
+SYMLINK_DIRS="zim zsh"
