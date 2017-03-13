@@ -38,9 +38,9 @@ function work_in_progress() {
 # (sorted alphabetically)
 #
 
-# alias d='git diff'
 # alias g='git'
-# alias s='git status -sb'
+alias d='git diff'
+alias s='git status -sb'
 
 # No arguments: `git status`
 # With arguments: acts like `git`
