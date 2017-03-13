@@ -15,7 +15,10 @@ Install
 
 Clone onto your laptop:
 
-    git clone git://github.com/ryanwood/dotfiles.git ~/dotfiles
+    git clone --recursive git://github.com/ryanwood/dotfiles.git ~/dotfiles
+
+[Install Janus per the instructions](https://github.com/carlhuda/janus#installation)u
+
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
