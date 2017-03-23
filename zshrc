@@ -55,7 +55,4 @@ _load_settings "$HOME/.zsh/configs"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # aliases
-# [[ -f ~/.aliases ]] && source ~/.aliases
-for alias in ~/.zsh/aliases/*; do
-  source $alias
-done
+[[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
