@@ -25,6 +25,7 @@ alias rgm='rails generate migration'
 alias rs='rails server'
 alias rsd='rails server --debugger'
 alias rsp='rails server --port'
+alias rst='touch tmp/restart.txt'
 
 # Rake aliases
 alias rdm='rake db:migrate'
@@ -146,7 +147,7 @@ alias gdw='git diff --word-diff'
 
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
-alias gfo='git fetch origin'
+alias gfo='git fetch origin --prune'
 
 alias gl='glol'
 alias glg='git log --stat'
