@@ -147,16 +147,17 @@ call plug#end()
 
 " ================ General Config ====================
 
-set number                      "Line numbers are good
-set relativenumber              "Relative numbers Help with movements
-set numberwidth=2               "Use relative number except for the current line
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
+set number                      " Line numbers are good
+set relativenumber              " Relative numbers Help with movements
+set numberwidth=2               " Use relative number except for the current line
+set backspace=indent,eol,start  " Allow backspace in insert mode
+set history=1000                " Store lots of :cmdline history
+set showcmd                     " Show incomplete cmds down the bottom
+set showmode                    " Show current mode down the bottom
+set gcr=a:blinkon0              " Disable cursor blink
+set visualbell                  " No sounds
+set autoread                    " Reload files changed outside vim
+set clipboard=unnamed           " Yank to the system clipboard
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
