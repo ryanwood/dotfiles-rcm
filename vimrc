@@ -1,4 +1,6 @@
 set nocompatible
+set encoding=utf-8
+scriptencoding utf-8
 
 call plug#begin()
 
@@ -7,6 +9,7 @@ Plug 'itchyny/lightline.vim'
 " Plug 'mhartington/oceanic-next'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 " Project
 Plug 'ctrlpvim/ctrlp.vim'
@@ -27,7 +30,7 @@ Plug 'slim-template/vim-slim'
 Plug 'keith/rspec.vim'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
-" Plug 'vim-ruby/vim-ruby'
+Plug 'mjacobus/vim-rspec-focus'
 
 " Search
 Plug 'justinmk/vim-sneak'
@@ -158,6 +161,7 @@ set gcr=a:blinkon0              " Disable cursor blink
 set visualbell                  " No sounds
 set autoread                    " Reload files changed outside vim
 set clipboard=unnamed           " Yank to the system clipboard
+set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -168,14 +172,16 @@ set hidden
 syntax on
 
 " Theme
+set guifont=Source\ Code\ Pro\ Light:h14
+
 if (has("termguicolors"))
   set termguicolors
 endif
 
-" colorscheme OceanicNext
 set background=dark
-" colorscheme solarized
 colorscheme gruvbox
+" colorscheme OceanicNext
+" colorscheme solarized
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
@@ -305,6 +311,62 @@ nmap <leader>w :w<cr><esc>
 nmap <leader>d :bp<bar>bd#<CR>
 nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when hitting return
 
+" =============== lightline =========================
+
+" let g:lightline = {}
+" let g:lightline.colorscheme = 'gruvbox'
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightlineFugitive',
+      \   'readonly': 'LightlineReadonly',
+      \   'modified': 'LightlineModified',
+      \   'filename': 'LightlineFilename'
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+      \ }
+
+function! LightlineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightlineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "\ue0a2"
+  else
+    return ""
+  endif
+endfunction
+
+function! LightlineFugitive()
+  if exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? "\ue0a0 ".branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
 " =============== NERDTree ==========================
 
 map <leader>n :NERDTreeToggle<cr>
@@ -343,8 +405,12 @@ nnoremap <leader>u :GundoToggle<CR>
 
 map <leader>zw :ZoomWin<CR>
 
-" =============== Mappings ==========================
+" =============== vim-rspec-focus ===================
 
+nnoremap <leader>a :AddFocusTag<CR>
+nnoremap <leader>r :RemoveAllFocusTags<CR>
+
+" =============== Mappings ==========================
 
 ""
 "" General Mappings (Normal, Visual, Operator-pending)
