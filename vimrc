@@ -34,6 +34,7 @@ Plug 'mjacobus/vim-rspec-focus'
 
 " Search
 Plug 'justinmk/vim-sneak'
+Plug 'mileszs/ack.vim'
 
 " Improvements
 Plug 'tomtom/tcomment_vim'
@@ -298,7 +299,7 @@ endif
 inoremap jk <esc>
 
 " edit vimrc/zshrc and load vimrc bindings
-nnoremap <leader>v :vsp $MYVIMRC<CR>
+nnoremap <leader>v :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Sometimes there is a delay when saving this file. I think this may be why.
@@ -366,6 +367,30 @@ function! LightlineFilename()
        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
+
+" =============== Ack.vim ===========================
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+if has("gui_macvim") && has("gui_running")
+  " Command-Shift-F on OSX
+  map <D-F> :Ack<space>
+else
+  " Define <C-F> to a dummy value to see if it would set <C-f> as well.
+  map <C-F> :dummy
+
+  if maparg("<C-f>") == ":dummy"
+    " <leader>f on systems where <C-f> == <C-F>
+    map <leader>f :Ack<space>
+  else
+    " <C-F> if we can still map <C-f> to <S-Down>
+    map <C-F> :Ack<space>
+  endif
+
+  map <C-f> <S-Down>
+endif
 
 " =============== NERDTree ==========================
 
