@@ -48,6 +48,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sjl/gundo.vim'
+Plug 'ervandew/supertab'
 
 call plug#end()
 
@@ -238,9 +239,9 @@ set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
-set foldmethod=indent   "fold based on indent
+set foldmethod=syntax    "fold based on syntax
 set foldnestmax=10       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+set nofoldenable         "dont fold by default
 
 " ================ Completion =======================
 
@@ -314,8 +315,6 @@ nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when
 
 " =============== lightline =========================
 
-" let g:lightline = {}
-" let g:lightline.colorscheme = 'gruvbox'
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
@@ -483,7 +482,7 @@ nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 
 " find merge conflict markers
-nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+" nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " Map the arrow keys to be based on display lines, not physical lines
 map <Down> gj
