@@ -1,3 +1,3 @@
-nnoremap <leader>a :AddFocusTag<CR>
-nnoremap <leader>r :RemoveAllFocusTags<CR>
+nnoremap <leader>fa :AddFocusTag<CR>
+nnoremap <leader>fr :RemoveAllFocusTags<CR>
 

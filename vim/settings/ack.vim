@@ -5,6 +5,7 @@ endif
 if has("gui_macvim") && has("gui_running")
   " Command-Shift-F on OSX
   map <D-F> :Ack<space>
+  nnoremap <leader>a :Ack<space>
 else
   " Define <C-F> to a dummy value to see if it would set <C-f> as well.
   map <C-F> :dummy
