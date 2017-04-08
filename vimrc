@@ -2,7 +2,7 @@ set nocompatible
 set encoding=utf-8
 scriptencoding utf-8
 
-" ================ General Config ====================
+" General Config {{{
 
 set number                      " Line numbers are good
 set relativenumber              " Relative numbers Help with movements
@@ -31,14 +31,17 @@ syntax on
 " the plugins.
 let mapleader=","
 
-" =============== VimPlug Initialization ===============
+" ======================================================== }}}
+" VimPlug Initialization {{{
+
 " This loads all the plugins specified in ~/.vim/plugs.vim
 if filereadable(expand("~/.vim/plugs.vim"))
   source ~/.vim/plugs.vim
 endif
 " au BufNewFile,BufRead *.vundle set filetype=vim
 
-" ================ Theme ===============================
+" ======================================================== }}}
+" Theme {{{
 
 if (has("termguicolors"))
   set termguicolors
@@ -51,13 +54,16 @@ colorscheme gruvbox
 " colorscheme OceanicNext
 " colorscheme solarized
 
-" ================ Turn Off Swap Files ==============
+" ======================================================== }}}
+" Turn Off Swap Files {{{
 
 set noswapfile
 set nobackup
 set nowb
 
-" ================ Persistent Undo ==================
+" ======================================================== }}}
+" Persistent Undo {{{
+
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
@@ -66,7 +72,8 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
-" ================ Indentation ======================
+" ======================================================== }}}
+" Indentation {{{
 
 set autoindent
 set smartindent
@@ -89,13 +96,15 @@ set list listchars=tab:\ \ ,trail:·
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
-" ================ Folds ============================
+" ======================================================== }}}
+" Folds {{{
 
 set foldmethod=syntax    "fold based on syntax
 set foldnestmax=10       "deepest fold is 3 levels
 set nofoldenable         "dont fold by default
 
-" ================ Completion =======================
+" ======================================================== }}}
+" Completion {{{
 
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
@@ -111,20 +120,23 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 "
-" ================ Scrolling ========================
+" ======================================================== }}}
+" Scrolling {{{
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-" ================ Search ===========================
+" ======================================================== }}}
+" Search {{{
 
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-" =============== Windows ===========================
+" ======================================================== }}}
+" Windows {{{
 
 " More natural window panes
 set splitbelow
@@ -146,11 +158,13 @@ if has("gui_running") && has("autocmd")
   autocmd VimResized * wincmd =
 endif
 
-" =============== Settings ==========================
+" ======================================================== }}}
+" Settings {{{
 
 so ~/.vim/settings.vim
 
-" =============== Utility ==========================
+" ======================================================== }}}
+" Utility {{{
 
 " jk is escape. I also map Caps Lock to escapse on OSX
 inoremap jk <esc>
@@ -169,7 +183,8 @@ nmap <leader>w :w<cr><esc>
 nmap <leader>d :bp<bar>bd#<CR>
 nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when hitting return
 
-" =============== Mappings ==========================
+" ======================================================== }}}
+" Mappings {{{
 
 ""
 "" General Mappings (Normal, Visual, Operator-pending)
@@ -283,3 +298,6 @@ endif
 " After whitespace, insert the current directory into a command-line path
 cnoremap <expr> <C-P> getcmdline()[getcmdpos()-2] ==# ' ' ? expand('%:p:h') : "\<C-P>"
 
+set modelines=1
+
+" vim:foldmethod=marker:foldlevel=0:foldenable
