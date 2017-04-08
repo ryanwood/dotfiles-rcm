@@ -38,6 +38,8 @@ Plug 'mjacobus/vim-rspec-focus'
 Plug 'justinmk/vim-sneak'
 Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-indexed-search'
+Plug 'skwp/greplace.vim'
+Plug 'nelstrom/vim-visual-star-search'
 
 " Improvements
 Plug 'tomtom/tcomment_vim'
@@ -50,16 +52,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sjl/gundo.vim'
 Plug 'ervandew/supertab'
+Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'vim-scripts/YankRing.vim' # Conflicts with ctrlp
 
 call plug#end()
 
-" Search
-" Plug 'nelstrom/vim-visual-star-search'
-" Plug 'skwp/greplace.vim'
-
-" Improvements
-
-" Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'Raimondi/delimitMate'
 " Plug 'Shougo/neocomplete'
 " Plug 'briandoll/change-inside-surroundings.vim'
@@ -73,7 +70,6 @@ call plug#end()
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'bogado/file-line'
 " Plug 'mattn/webapi-vim'
-" Plug 'skwp/YankRing.vim'
 " Plug 'tomtom/tlib_vim'
 " Plug 'vim-scripts/AnsiEsc.vim'
 " Plug 'vim-scripts/AutoTag'
@@ -82,7 +78,6 @@ call plug#end()
 " Plug 'goldfeld/ctrlr.vim'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'mbbill/undotree'
-" Plug 'vim-scripts/YankRing.vim'
 " Plug 'majutsushi/tagbar'
 " Plug 'kien/rainbow_parentheses.vim'
 " Plug 'Valloric/MatchTagAlways'
