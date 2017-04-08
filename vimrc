@@ -2,154 +2,6 @@ set nocompatible
 set encoding=utf-8
 scriptencoding utf-8
 
-call plug#begin()
-
-" Appearance
-Plug 'itchyny/lightline.vim'
-" Plug 'mhartington/oceanic-next'
-" Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
-Plug 'shinchu/lightline-gruvbox.vim'
-
-" Project
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'vim-scripts/ZoomWin'
-
-" Git
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-fugitive'
-
-" Languages
-Plug 'slim-template/vim-slim'
-
-" Ruby
-Plug 'keith/rspec.vim'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rails'
-Plug 'mjacobus/vim-rspec-focus'
-
-" Search
-Plug 'justinmk/vim-sneak'
-Plug 'mileszs/ack.vim'
-
-" Improvements
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'sjl/gundo.vim'
-Plug 'ervandew/supertab'
-
-call plug#end()
-
-"""""""""""""""""""""""""""
-" Plugins that need vetting
-"""""""""""""""""""""""""""
-
-" Project
-" Plug 'jistr/vim-nerdtree-tabs.git'
-" Plug 'JazzCore/ctrlp-cmatcher'
-" Plug 'junegunn/fzf'
-
-" Git
-"Plug 'gregsexton/gitv'
-"Plug 'mattn/gist-vim'
-
-" Languages
-" Plug 'sheerun/vim-polyglot'
-" Plug 'garbas/vim-snipmate.git'
-" Plug 'honza/vim-snippets'
-" Plug 'jtratner/vim-flavored-markdown.git'
-" Plug 'scrooloose/syntastic.git'
-" Plug 'nelstrom/vim-markdown-preview'
-" Plug 'skwp/vim-html-escape'
-" Plug 'mxw/vim-jsx'
-" Plug 'jparise/vim-graphql'
-
-" Ruby
-" Plug 'ecomba/vim-ruby-refactoring'
-" Plug 'tpope/vim-rake.git'
-" Plug 'tpope/vim-rvm.git'
-" Plug 'skwp/vim-iterm-rspec'
-" Plug 'skwp/vim-spec-finder'
-" Plug 'ck3g/vim-change-hash-syntax'
-
-" Search
-" Plug 'rking/ag.vim'
-" Plug 'henrik/vim-indexed-search'
-" Plug 'nelstrom/vim-visual-star-search'
-" Plug 'skwp/greplace.vim'
-" Plug 'Lokaltog/vim-easymotion'
-
-" Improvements
-
-" Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'Raimondi/delimitMate'
-" Plug 'Shougo/neocomplete.git'
-" Plug 'briandoll/change-inside-surroundings.vim.git'
-" Plug 'godlygeek/tabular'
-" Plug 'vim-scripts/camelcasemotion.git'
-" Plug 'vim-scripts/matchit.zip.git'
-" Plug 'kristijanhusak/vim-multiple-cursors'
-" Plug 'Keithbsmiley/investigate.vim'
-" Plug 'chrisbra/NrrwRgn'
-" Plug 'christoomey/vim-tmux-navigator'
-" Plug 'MarcWeber/vim-addon-mw-utils.git'
-" Plug 'bogado/file-line.git'
-" Plug 'mattn/webapi-vim.git'
-" Plug 'sjl/gundo.vim'
-" Plug 'skwp/YankRing.vim'
-" Plug 'tomtom/tlib_vim.git'
-" Plug 'vim-scripts/AnsiEsc.vim.git'
-" Plug 'vim-scripts/AutoTag.git'
-" Plug 'vim-scripts/lastpos.vim'
-" Plug 'vim-scripts/sudo.vim'
-" Plug 'goldfeld/ctrlr.vim'
-" Plug 'editorconfig/editorconfig-vim'
-
-" Other stuff to look at
-
-" Plug 'henrik/vim-indexed-search'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'scrooloose/syntastic'
-" Plug 'mbbill/undotree'
-" Plug 'vim-scripts/YankRing.vim'
-" Plug 'majutsushi/tagbar'
-" Plug 'kien/rainbow_parentheses.vim'
-" Plug 'Valloric/MatchTagAlways'
-" Plug 'EinfachToll/DidYouMean'
-" Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'michaeljsmith/vim-indent-object'
-" Plug 'vim-utils/vim-ruby-fold'
-" Plug 'christoomey/vim-tmux-navigator'
-" Plug 'chrisbra/csv.vim'
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'airblade/vim-gitgutter'
-" Plug 'godlygeek/tabular'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'kana/vim-textobj-user'
-" Plug 'nelstrom/vim-textobj-rubyblock'
-" Plug 'dhruvasagar/vim-table-mode'
-" Plug 'mattn/webapi-vim'
-" Plug 'mattn/gist-vim'
-" Plug 'mzlogin/vim-markdown-toc'
-" Plug 'aklt/plantuml-syntax'
-" Plug 'AndrewRadev/sideways.vim'
-" Plug 'kassio/neoterm'
-" Plug 'janko-m/vim-test'
-" Plug 'flazz/vim-colorschemes'
-
-
 " ================ General Config ====================
 
 set number                      " Line numbers are good
@@ -173,31 +25,31 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
-" Theme
-set guifont=Source\ Code\ Pro\ Light:h14
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-set background=dark
-colorscheme gruvbox
-" colorscheme OceanicNext
-" colorscheme solarized
-
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-" if filereadable(expand("~/.vim/vundles.vim"))
-"   source ~/.vim/vundles.vim
-" endif
+" =============== VimPlug Initialization ===============
+" This loads all the plugins specified in ~/.vim/plugs.vim
+if filereadable(expand("~/.vim/plugs.vim"))
+  source ~/.vim/plugs.vim
+endif
 " au BufNewFile,BufRead *.vundle set filetype=vim
+
+" ================ Theme ===============================
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+set guifont=Source\ Code\ Pro\ Light:h14
+
+set background=dark
+colorscheme gruvbox
+" colorscheme OceanicNext
+" colorscheme solarized
 
 " ================ Turn Off Swap Files ==============
 
@@ -294,6 +146,10 @@ if has("gui_running") && has("autocmd")
   autocmd VimResized * wincmd =
 endif
 
+" =============== Settings ==========================
+
+so ~/.vim/settings.vim
+
 " =============== Utility ==========================
 
 " jk is escape. I also map Caps Lock to escapse on OSX
@@ -312,127 +168,6 @@ nmap <leader>w :w<cr><esc>
 " Delete buffer but keep window. http://stackoverflow.com/questions/4298910/vim-close-buffer-but-not-split-window
 nmap <leader>d :bp<bar>bd#<CR>
 nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when hitting return
-
-" =============== lightline =========================
-
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightlineFugitive',
-      \   'readonly': 'LightlineReadonly',
-      \   'modified': 'LightlineModified',
-      \   'filename': 'LightlineFilename'
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
-
-function! LightlineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightlineReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "\ue0a2"
-  else
-    return ""
-  endif
-endfunction
-
-function! LightlineFugitive()
-  if exists("*fugitive#head")
-    let branch = fugitive#head()
-    return branch !=# '' ? "\ue0a0 ".branch : ''
-  endif
-  return ''
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-" =============== Ack.vim ===========================
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-if has("gui_macvim") && has("gui_running")
-  " Command-Shift-F on OSX
-  map <D-F> :Ack<space>
-else
-  " Define <C-F> to a dummy value to see if it would set <C-f> as well.
-  map <C-F> :dummy
-
-  if maparg("<C-f>") == ":dummy"
-    " <leader>f on systems where <C-f> == <C-F>
-    map <leader>f :Ack<space>
-  else
-    " <C-F> if we can still map <C-f> to <S-Down>
-    map <C-F> :Ack<space>
-  endif
-
-  map <C-f> <S-Down>
-endif
-
-" =============== NERDTree ==========================
-
-map <leader>n :NERDTreeToggle<cr>
-map <leader>nf :NERDTreeFind<cr>
-map <leader>nm :NERDTreeMirror<cr>
-
-" =============== tComment ==========================
-
-if has("gui_macvim") && has("gui_running")
-  map <D-/> :TComment<CR>
-  imap <D-/> <Esc>:TComment<CR>i
-else
-  map <leader>/ :TComment<CR>
-endif
-
-call tcomment#DefineType('slim', '/ %s')
-
-" =============== BufferGator =======================
-
-let g:buffergator_sort_regime = "mru"
-let g:buffergator_autoexpand_on_split = 0
-let g:buffergator_display_regime = "basename"
-let g:buffergator_show_full_directory_path = 0
-let g:buffergator_split_size = 50
-
-" =============== vim-better-whitespace =============
-
-" https://github.com/ntpeters/vim-better-whitespace
-autocmd BufEnter * EnableStripWhitespaceOnSave
-
-" =============== gundo =============================
-
-nnoremap <leader>u :GundoToggle<CR>
-
-" =============== ZoomWin ===========================
-
-map <leader>zw :ZoomWin<CR>
-
-" =============== vim-rspec-focus ===================
-
-nnoremap <leader>a :AddFocusTag<CR>
-nnoremap <leader>r :RemoveAllFocusTags<CR>
 
 " =============== Mappings ==========================
 
