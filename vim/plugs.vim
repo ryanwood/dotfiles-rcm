@@ -13,7 +13,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'vim-scripts/ZoomWin'
 
 " Git
 Plug 'tpope/vim-git'
@@ -24,7 +23,7 @@ Plug 'airblade/vim-gitgutter'
 " Languages
 Plug 'slim-template/vim-slim'
 Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips'
+Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/syntastic'
 
@@ -51,12 +50,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sjl/gundo.vim'
-Plug 'ervandew/supertab'
 Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'vim-scripts/YankRing.vim' # Conflicts with ctrlp
+Plug 'chrisbra/NrrwRgn'
+Plug 'vim-scripts/ZoomWin'
 
 call plug#end()
 
+" Plug 'vim-scripts/YankRing.vim' # Conflicts with ctrlp
 " Plug 'Raimondi/delimitMate'
 " Plug 'Shougo/neocomplete'
 " Plug 'briandoll/change-inside-surroundings.vim'
@@ -65,7 +65,6 @@ call plug#end()
 " Plug 'vim-scripts/matchit.zip'
 " Plug 'kristijanhusak/vim-multiple-cursors'
 " Plug 'Keithbsmiley/investigate.vim'
-" Plug 'chrisbra/NrrwRgn'
 " Plug 'christoomey/vim-tmux-navigator'
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'bogado/file-line'
