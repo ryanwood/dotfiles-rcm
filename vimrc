@@ -14,8 +14,23 @@ set showmode                    " Show current mode down the bottom
 set gcr=a:blinkon0              " Disable cursor blink
 set visualbell                  " No sounds
 set autoread                    " Reload files changed outside vim
-set clipboard=unnamed           " Yank to the system clipboard
 set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
+set colorcolumn=80,100
+
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+  " For terminal...
+  " let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  " let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+  " For tmux...
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
