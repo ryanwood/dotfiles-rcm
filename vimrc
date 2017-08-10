@@ -34,11 +34,112 @@ let mapleader=","
 " ======================================================== }}}
 " VimPlug Initialization {{{
 
-" This loads all the plugins specified in ~/.vim/plugs.vim
-if filereadable(expand("~/.vim/plugs.vim"))
-  source ~/.vim/plugs.vim
-endif
-" au BufNewFile,BufRead *.vundle set filetype=vim
+" " This loads all the plugins specified in ~/.vim/plugs.vim
+" if filereadable(expand("~/.vim/plugs.vim"))
+"   source ~/.vim/plugs.vim
+" endif
+" " au BufNewFile,BufRead *.vundle set filetype=vim
+
+call plug#begin()
+
+" Appearance
+Plug 'itchyny/lightline.vim'
+" Plug 'mhartington/oceanic-next'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
+
+" Project
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+Plug 'jeetsukumaran/vim-buffergator'
+
+" Git
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+
+" Languages
+Plug 'slim-template/vim-slim'
+Plug 'sheerun/vim-polyglot'
+Plug 'MarcWeber/vim-addon-mw-utils'  " Required for snipmate
+Plug 'tomtom/tlib_vim'  " Required for snipmate
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/syntastic'
+
+" Ruby
+Plug 'keith/rspec.vim'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
+Plug 'mjacobus/vim-rspec-focus'
+
+" Search
+Plug 'justinmk/vim-sneak'
+Plug 'mileszs/ack.vim'
+Plug 'henrik/vim-indexed-search'
+Plug 'skwp/greplace.vim'
+Plug 'nelstrom/vim-visual-star-search'
+
+" Improvements
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'sjl/gundo.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'chrisbra/NrrwRgn'
+Plug 'vim-scripts/ZoomWin'
+
+call plug#end()
+
+" Plug 'vim-scripts/YankRing.vim' # Conflicts with ctrlp
+" Plug 'Raimondi/delimitMate'
+" Plug 'Shougo/neocomplete'
+" Plug 'briandoll/change-inside-surroundings.vim'
+" Plug 'godlygeek/tabular'
+" Plug 'vim-scripts/camelcasemotion'
+" Plug 'vim-scripts/matchit.zip'
+" Plug 'kristijanhusak/vim-multiple-cursors'
+" Plug 'Keithbsmiley/investigate.vim'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'bogado/file-line'
+" Plug 'mattn/webapi-vim'
+" Plug 'tomtom/tlib_vim'
+" Plug 'vim-scripts/AnsiEsc.vim'
+" Plug 'vim-scripts/AutoTag'
+" Plug 'vim-scripts/lastpos.vim'
+" Plug 'vim-scripts/sudo.vim'
+" Plug 'goldfeld/ctrlr.vim'
+" Plug 'editorconfig/editorconfig-vim'
+" Plug 'mbbill/undotree'
+" Plug 'majutsushi/tagbar'
+" Plug 'kien/rainbow_parentheses.vim'
+" Plug 'Valloric/MatchTagAlways'
+" Plug 'EinfachToll/DidYouMean'
+" Plug 'michaeljsmith/vim-indent-object'
+" Plug 'vim-utils/vim-ruby-fold'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'chrisbra/csv.vim'
+" Plug 'ludovicchabant/vim-gutentags'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'kana/vim-textobj-user'
+" Plug 'nelstrom/vim-textobj-rubyblock'
+" Plug 'dhruvasagar/vim-table-mode'
+" Plug 'mattn/webapi-vim'
+" Plug 'mzlogin/vim-markdown-toc'
+" Plug 'aklt/plantuml-syntax'
+" Plug 'AndrewRadev/sideways.vim'
+" Plug 'kassio/neoterm'
+" Plug 'janko-m/vim-test'
 
 " ======================================================== }}}
 " Theme {{{
@@ -157,11 +258,6 @@ if has("gui_running") && has("autocmd")
   " Automatically resize splits when resizing MacVim window
   autocmd VimResized * wincmd =
 endif
-
-" ======================================================== }}}
-" Settings {{{
-
-so ~/.vim/settings.vim
 
 " ======================================================== }}}
 " Utility {{{
@@ -300,4 +396,211 @@ cnoremap <expr> <C-P> getcmdline()[getcmdpos()-2] ==# ' ' ? expand('%:p:h') : "\
 
 set modelines=1
 
-" vim:foldmethod=marker:foldlevel=0:foldenable
+" ======================================================== }}}
+" Plugin Settings {{{
+
+" If we source from different files - becomes less manageable
+" so ~/.vim/settings.vim
+
+" ack.vim {{{
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+if has("gui_macvim") && has("gui_running")
+  " Command-Shift-F on OSX
+  map <D-F> :Ack<space>
+  nnoremap <leader>a :Ack<space>
+else
+  " Define <C-F> to a dummy value to see if it would set <C-f> as well.
+  map <C-F> :dummy
+
+  if maparg("<C-f>") == ":dummy"
+    " <leader>f on systems where <C-f> == <C-F>
+    map <leader>f :Ack<space>
+  else
+    " <C-F> if we can still map <C-f> to <S-Down>
+    map <C-F> :Ack<space>
+  endif
+
+  map <C-f> <S-Down>
+endif
+
+" ======================================================== }}}
+" buffergator.vim {{{
+
+let g:buffergator_sort_regime = "mru"
+let g:buffergator_autoexpand_on_split = 0
+let g:buffergator_display_regime = "basename"
+let g:buffergator_show_full_directory_path = 0
+let g:buffergator_split_size = 50
+
+" ======================================================== }}}
+" ctrlp.vim {{{
+
+if exists("g:ctrlp_user_command")
+  unlet g:ctrlp_user_command
+endif
+if executable('ag')
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command =
+        \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+else
+  " Fall back to using git ls-files if Ag is not available
+  let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|bower_components|node_modules'
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+endif
+
+" Default to filename searches - so that appctrl will find application
+" controller
+" let g:ctrlp_by_filename = 1
+
+" Don't jump to already open window. This is annoying if you are maintaining
+" several Tab workspaces and want to open two windows into the same file.
+" let g:ctrlp_switch_buffer = 0
+
+" ======================================================== }}}
+" fugitive.vim {{{
+
+" nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+" nnoremap <leader>gc :Gcommit -v -q<CR>
+" nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+
+" ======================================================== }}}
+" greplace.vim {{{
+
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
+
+" ======================================================== }}}
+" gundo.vim {{{
+
+nnoremap <leader>u :GundoToggle<CR>
+
+" ======================================================== }}}
+" lightline.vim {{{
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightlineFugitive',
+      \   'readonly': 'LightlineReadonly',
+      \   'modified': 'LightlineModified',
+      \   'filename': 'LightlineFilename'
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+      \ }
+
+function! LightlineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightlineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "\ue0a2"
+  else
+    return ""
+  endif
+endfunction
+
+function! LightlineFugitive()
+  if exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? "\ue0a0 ".branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+" ======================================================== }}}
+" nerdtree.vim {{{
+
+map <leader>n :NERDTreeToggle<cr>
+map <leader>fn :NERDTreeFind<cr>
+map <leader>mn :NERDTreeMirror<cr>
+
+" ======================================================== }}}
+" tcomment.vim {{{
+
+if has("gui_macvim") && has("gui_running")
+  map <D-/> :TComment<CR>
+  imap <D-/> <Esc>:TComment<CR>i
+else
+  map <leader>/ :TComment<CR>
+endif
+
+call tcomment#DefineType('slim', '/ %s')
+
+" ======================================================== }}}
+" vim-better-whitespace.vim {{{
+
+autocmd BufEnter * EnableStripWhitespaceOnSave
+
+" ======================================================== }}}
+" vim-session.vim {{{
+
+" Prevent vim-session from asking us to load the session.
+" If you want to load the session, use :SaveSession and :OpenSession
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+" save session
+nnoremap <leader>ss :SaveSession<CR>
+nnoremap <leader>so :OpenSession<CR>
+
+" ======================================================== }}}
+" vim-sneak.vim {{{
+
+let g:sneak#label = 1
+
+" ======================================================== }}}
+" vim_rspec_focus.vim {{{
+
+nnoremap <leader>fa :AddFocusTag<CR>
+nnoremap <leader>fr :RemoveAllFocusTags<CR>
+
+" ======================================================== }}}
+" yankring.vim {{{
+
+let g:yankring_history_file = '.yankring-history'
+nnoremap ,yr :YRShow<CR>
+nnoremap C-y :YRShow<CR>
+
+" ======================================================== }}}
+" zoomwin.vim {{{
+
+map <leader>zw :ZoomWin<CR>
+
+" ======================================================== }}}
+
+" ======================================================== }}}
+"// " vim:foldmethod=marker:foldlevel=1:foldenable
