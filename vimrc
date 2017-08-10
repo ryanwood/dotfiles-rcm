@@ -17,6 +17,23 @@ set autoread                    " Reload files changed outside vim
 set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
 set colorcolumn=80,100
 
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+"turn on syntax highlighting
+syntax on
+
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
+
+" ======================================================== }}}
+" tmux Integration {{{
+
 if $TMUX == ''
   set clipboard+=unnamed
 endif
@@ -32,20 +49,7 @@ if $TERM_PROGRAM =~ "iTerm"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
 
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
-
-"turn on syntax highlighting
-syntax on
-
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
-
+"
 " ======================================================== }}}
 " VimPlug Initialization {{{
 
