@@ -5,6 +5,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+alias start="vim ~/start.txt"
+
 # Mac Helpers
 alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
 alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
