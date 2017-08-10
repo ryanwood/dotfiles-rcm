@@ -219,6 +219,9 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=vendor/ruby/**   " For local path gem installation
+set wildignore+=node_modules/**
+set wildignore+=bower_components/**
 
 "
 " ======================================================== }}}
