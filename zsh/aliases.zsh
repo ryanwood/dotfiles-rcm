@@ -8,9 +8,9 @@ alias .....='cd ../../../..'
 # Mac Helpers
 alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
 alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+alias pt='papertrail'
 
 # Rails
-
 alias devlog='tail -f log/development.log'
 alias prodlog='tail -f log/production.log'
 alias testlog='tail -f log/test.log'
@@ -49,7 +49,6 @@ alias tff="bundle exec rspec --fail-fast"
 alias tfo="bundle exec rspec --only-failures"
 
 # Bundler
-
 alias b="bundle"
 alias be="b exec"
 alias bl="b list"
