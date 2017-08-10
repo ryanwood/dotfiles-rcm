@@ -148,7 +148,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set guifont=Source\ Code\ Pro\ Light:h14
+set guifont=Hack:h14
 
 set background=dark
 colorscheme gruvbox
