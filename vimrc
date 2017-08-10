@@ -167,7 +167,14 @@ set guifont=Hack:h14
 
 set background=dark
 colorscheme gruvbox
+
 " colorscheme OceanicNext
+
+" let g:solarized_termcolors=16
+" set t_Co=16
+" set background=dark
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
 " colorscheme solarized
 
 " ======================================================== }}}
