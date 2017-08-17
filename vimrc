@@ -88,10 +88,12 @@ Plug 'honza/vim-snippets'
 Plug 'scrooloose/syntastic'
 
 " Ruby
-Plug 'keith/rspec.vim'
+Plug 'keith/rspec.vim'  " RSpec syntax
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'mjacobus/vim-rspec-focus'
+Plug 'thoughtbot/vim-rspec'
+Plug 'jgdavey/tslime.vim'
 
 " Search
 Plug 'justinmk/vim-sneak'
@@ -590,6 +592,16 @@ call tcomment#DefineType('slim', '/ %s')
 " vim-better-whitespace.vim {{{
 
 autocmd BufEnter * EnableStripWhitespaceOnSave
+
+
+" ======================================================== }}}
+" vim-rspec.vim {{{
+
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " ======================================================== }}}
 " vim-session.vim {{{
