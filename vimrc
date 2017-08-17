@@ -491,6 +491,8 @@ endif
 " several Tab workspaces and want to open two windows into the same file.
 " let g:ctrlp_switch_buffer = 0
 
+map <C-B> :CtrlPBuffer<CR>
+
 " ======================================================== }}}
 " fugitive.vim {{{
 
