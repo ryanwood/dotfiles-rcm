@@ -15,7 +15,7 @@ set gcr=a:blinkon0              " Disable cursor blink
 set visualbell                  " No sounds
 set autoread                    " Reload files changed outside vim
 set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
-set colorcolumn=80,100
+" set colorcolumn=80,100
 set clipboard=unnamed
 
 " This makes vim act like all other editors, buffers can
