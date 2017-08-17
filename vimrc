@@ -30,7 +30,7 @@ syntax on
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","
+let mapleader=" "
 
 " ======================================================== }}}
 " tmux Integration {{{
