@@ -319,8 +319,8 @@ nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when
 " nmap <silent> <F4> :set invpaste<CR>:set paste?<CR>
 " imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
-" Toggle current fold
-nnoremap <Space> za
+" Toggle current fold (Disabled now that we are using Space as leader)
+" nnoremap <Space> za
 
 " format the entire file
 nnoremap <leader>fef :normal! gg=G``<CR>
