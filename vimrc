@@ -71,6 +71,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Git
 Plug 'tpope/vim-git'
