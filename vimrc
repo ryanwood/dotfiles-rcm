@@ -68,8 +68,7 @@ Plug 'shinchu/lightline-gruvbox.vim'
 " Project
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+Plug 'tpope/vim-obsession'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'christoomey/vim-tmux-navigator'
 
