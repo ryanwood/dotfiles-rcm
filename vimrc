@@ -302,9 +302,10 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 nmap <leader>w :w<cr><esc>
 " Delete buffer but keep window. http://stackoverflow.com/questions/4298910/vim-close-buffer-but-not-split-window
-nmap <leader>d :bp<bar>bd#<CR>
+nmap <leader>bd :bp<bar>bd#<CR>
 nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when hitting return
 
+nmap <leader>T :enew<cr>
 " ======================================================== }}}
 " Mappings {{{
 
@@ -462,8 +463,28 @@ let g:buffergator_display_regime = "basename"
 let g:buffergator_show_full_directory_path = 0
 let g:buffergator_split_size = 50
 
+" Use the right side of the screen
+let g:buffergator_viewport_split_policy = 'R'
+
+" I want my own keymappings...
+let g:buffergator_suppress_keymaps = 1
+
+" Looper buffers
+"let g:buffergator_mru_cycle_loop = 1
+
+" Go to the previous buffer open
+nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+
+" Go to the next buffer open
+nmap <leader>kk :BuffergatorMruCycleNext<cr>
+
+" View the entire list of buffers open
+nmap <leader>bl :BuffergatorOpen<cr>
+
 " ======================================================== }}}
 " ctrlp.vim {{{
+
+let g:ctrlp_show_hidden = 1
 
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
@@ -489,7 +510,18 @@ endif
 " several Tab workspaces and want to open two windows into the same file.
 " let g:ctrlp_switch_buffer = 0
 
-map <C-B> :CtrlPBuffer<CR>
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
+
+" Use a leader instead of the actual named binding
+nmap <leader>p :CtrlP<cr>
+
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
 
 " ======================================================== }}}
 " fugitive.vim {{{
