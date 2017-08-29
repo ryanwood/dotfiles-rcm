@@ -2,59 +2,7 @@ set nocompatible
 set encoding=utf-8
 scriptencoding utf-8
 
-" General Config {{{
-
-set number                      " Line numbers are good
-set relativenumber              " Relative numbers Help with movements
-set numberwidth=2               " Use relative number except for the current line
-set backspace=indent,eol,start  " Allow backspace in insert mode
-set history=1000                " Store lots of :cmdline history
-set showcmd                     " Show incomplete cmds down the bottom
-set showmode                    " Show current mode down the bottom
-set gcr=a:blinkon0              " Disable cursor blink
-set visualbell                  " No sounds
-set autoread                    " Reload files changed outside vim
-set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
-" set colorcolumn=80,100
-set clipboard=unnamed
-
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
-
-"turn on syntax highlighting
-syntax on
-
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=" "
-
-" ======================================================== }}}
-" tmux Integration {{{
-
-" Change cursor shape between insert and normal mode in iTerm2.app
-if $TERM_PROGRAM =~ "iTerm"
-  " For terminal...
-  " let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-  " let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-  " For tmux...
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-endif
-
-"
-" ======================================================== }}}
 " VimPlug Initialization {{{
-
-" " This loads all the plugins specified in ~/.vim/plugs.vim
-" if filereadable(expand("~/.vim/plugs.vim"))
-"   source ~/.vim/plugs.vim
-" endif
-" " au BufNewFile,BufRead *.vundle set filetype=vim
 
 call plug#begin()
 
@@ -78,30 +26,38 @@ Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
-" Languages
-Plug 'slim-template/vim-slim'
-Plug 'sheerun/vim-polyglot'
-Plug 'MarcWeber/vim-addon-mw-utils'  " Required for snipmate
-Plug 'tomtom/tlib_vim'  " Required for snipmate
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'scrooloose/syntastic'
-
-" Ruby
-Plug 'keith/rspec.vim'  " RSpec syntax
-Plug 'tpope/vim-bundler'
+" Language/Syntax
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+Plug 'keith/rspec.vim'
+Plug 'slim-template/vim-slim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-liquid'
+Plug 'keith/tmux.vim'
+Plug 'wellbredgrapefruit/tomdoc.vim'
+Plug 'stephpy/vim-yaml'
+
+" Tools
+" Plug 'MarcWeber/vim-addon-mw-utils'  " Required for snipmate
+" Plug 'tomtom/tlib_vim'  " Required for snipmate
+" Plug 'garbas/vim-snipmate'
+" Plug 'honza/vim-snippets'
+" Plug 'scrooloose/syntastic'
+" Plug 'tpope/vim-bundler'
 Plug 'mjacobus/vim-rspec-focus'
-Plug 'thoughtbot/vim-rspec'
+Plug 'thoughtbot/vim-rspec'  " Test Runners
 Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-eunuch' " Rename and other Unix helpers
 
 " Search
 Plug 'justinmk/vim-sneak'
 Plug 'mileszs/ack.vim'
-Plug 'henrik/vim-indexed-search'
+" Plug 'henrik/vim-indexed-search'
 Plug 'skwp/greplace.vim'
-Plug 'nelstrom/vim-visual-star-search'
+" Plug 'nelstrom/vim-visual-star-search'
 
 " Improvements
 Plug 'tomtom/tcomment_vim'
@@ -113,9 +69,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sjl/gundo.vim'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'chrisbra/NrrwRgn'
-Plug 'vim-scripts/ZoomWin'
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'chrisbra/NrrwRgn'
+" Plug 'vim-scripts/ZoomWin'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
@@ -161,6 +117,58 @@ call plug#end()
 " Plug 'kassio/neoterm'
 " Plug 'janko-m/vim-test'
 
+" ======================================================== }}}
+" General Config {{{
+
+set number                      " Line numbers are good
+set relativenumber              " Relative numbers Help with movements
+set numberwidth=2               " Use relative number except for the current line
+set backspace=indent,eol,start  " Allow backspace in insert mode
+set history=1000                " Store lots of :cmdline history
+set showcmd                     " Show incomplete cmds down the bottom
+set showmode                    " Show current mode down the bottom
+set gcr=a:blinkon0              " Disable cursor blink
+set visualbell                  " No sounds
+set autoread                    " Reload files changed outside vim
+set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
+" set colorcolumn=80,100
+set clipboard=unnamed
+
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+"turn on syntax highlighting
+syntax on
+
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=" "
+
+" Reload changes outside vim
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+" ======================================================== }}}
+" tmux Integration {{{
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+  " For terminal...
+  " let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  " let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+  " For tmux...
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
+
+"
 " ======================================================== }}}
 " Theme {{{
 
