@@ -94,6 +94,7 @@ Plug 'tpope/vim-rails'
 Plug 'mjacobus/vim-rspec-focus'
 Plug 'thoughtbot/vim-rspec'
 Plug 'jgdavey/tslime.vim'
+Plug 'tpope/vim-eunuch' " Rename and other Unix helpers
 
 " Search
 Plug 'justinmk/vim-sneak'
@@ -115,6 +116,7 @@ Plug 'sjl/gundo.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'vim-scripts/ZoomWin'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
 
