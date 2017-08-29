@@ -269,12 +269,12 @@ set smartcase       " ...unless we type a capital
 set splitbelow
 set splitright
 
-" Easy Switching
-map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-x> <c-w>x
+" " Easy Switching - Now built in the vim-tmux-navigator plugin
+" map <c-h> <c-w>h
+" map <c-j> <c-w>j
+" map <c-k> <c-w>k
+" map <c-l> <c-w>l
+" map <c-x> <c-w>x
 
 " Adjust viewports to the same size
 map <Leader>= <C-w>=
