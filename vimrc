@@ -11,7 +11,7 @@ Plug 'itchyny/lightline.vim'
 " Plug 'mhartington/oceanic-next'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'ryanwood/lightline-gruvbox.vim'
 
 " Project
 Plug 'ctrlpvim/ctrlp.vim'
@@ -51,6 +51,7 @@ Plug 'mjacobus/vim-rspec-focus'
 Plug 'thoughtbot/vim-rspec'  " Test Runners
 Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-eunuch' " Rename and other Unix helpers
+Plug 'mattn/emmet-vim'
 
 " Search
 Plug 'justinmk/vim-sneak'
@@ -73,6 +74,9 @@ Plug 'sjl/gundo.vim'
 " Plug 'chrisbra/NrrwRgn'
 " Plug 'vim-scripts/ZoomWin'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'jiangmiao/auto-pairs'
+Plug 'alvan/vim-closetag'
+Plug 'michaeljsmith/vim-indent-object'
 
 call plug#end()
 
@@ -282,7 +286,7 @@ set splitright
 " map <c-j> <c-w>j
 " map <c-k> <c-w>k
 " map <c-l> <c-w>l
-" map <c-x> <c-w>x
+map <c-x> <c-w>x
 
 " Adjust viewports to the same size
 map <Leader>= <C-w>=
@@ -443,24 +447,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-if has("gui_macvim") && has("gui_running")
-  " Command-Shift-F on OSX
-  map <D-F> :Ack<space>
-  nnoremap <leader>a :Ack<space>
-else
-  " Define <C-F> to a dummy value to see if it would set <C-f> as well.
-  map <C-F> :dummy
-
-  if maparg("<C-f>") == ":dummy"
-    " <leader>f on systems where <C-f> == <C-F>
-    map <leader>f :Ack<space>
-  else
-    " <C-F> if we can still map <C-f> to <S-Down>
-    map <C-F> :Ack<space>
-  endif
-
-  map <C-f> <S-Down>
-endif
+map <leader>ff :Ack<space>
 
 " ======================================================== }}}
 " buffergator.vim {{{
@@ -534,13 +521,15 @@ nmap <leader>bs :CtrlPMRU<cr>
 " ======================================================== }}}
 " fugitive.vim {{{
 
-" nnoremap <leader>ga :Git add %:p<CR><CR>
-nnoremap <leader>gs :Gstatus<CR>
-" nnoremap <leader>gc :Gcommit -v -q<CR>
-" nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gt :Gcommit -v -q %:p<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>
 
 " ======================================================== }}}
@@ -629,15 +618,29 @@ endif
 call tcomment#DefineType('slim', '/ %s')
 
 " ======================================================== }}}
+" tslime.vim {{{
+
+let g:tslime_always_current_session = 1
+nmap <C-c>r <Plug>SetTmuxVar
+
+" ======================================================== }}}
 " vim-better-whitespace.vim {{{
 
 autocmd BufEnter * EnableStripWhitespaceOnSave
 
+" ======================================================== }}}
+" vim-closetag {{{
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
 
 " ======================================================== }}}
 " vim-rspec.vim {{{
 
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
@@ -657,9 +660,9 @@ nnoremap <leader>fr :RemoveAllFocusTags<CR>
 " ======================================================== }}}
 " yankring.vim {{{
 
-let g:yankring_history_file = '.yankring-history'
-nnoremap ,yr :YRShow<CR>
-nnoremap C-y :YRShow<CR>
+" let g:yankring_history_file = '.yankring-history'
+" nnoremap ,yr :YRShow<CR>
+" nnoremap C-y :YRShow<CR>
 
 " ======================================================== }}}
 " zoomwin.vim {{{
