@@ -40,27 +40,42 @@ Plug 'keith/tmux.vim'
 Plug 'wellbredgrapefruit/tomdoc.vim'
 Plug 'stephpy/vim-yaml'
 
-" Tools
-" Plug 'MarcWeber/vim-addon-mw-utils'  " Required for snipmate
-" Plug 'tomtom/tlib_vim'  " Required for snipmate
+" Snippets
+" Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
+" Plug 'tomtom/tlib_vim'               " Dependency for snipmate
 " Plug 'garbas/vim-snipmate'
 " Plug 'honza/vim-snippets'
-" Plug 'scrooloose/syntastic'
-" Plug 'tpope/vim-bundler'
-Plug 'mjacobus/vim-rspec-focus'
-Plug 'thoughtbot/vim-rspec'  " Test Runners
+
+" Tools
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
-Plug 'tpope/vim-eunuch' " Rename and other Unix helpers
+" Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
+Plug 'mjacobus/vim-rspec-focus'
+" Plug 'scrooloose/syntastic'
+Plug 'thoughtbot/vim-rspec'  " Test Runners
+Plug 'tpope/vim-eunuch'      " Rename and other Unix helpers
+Plug 'tommcdo/vim-lion'      " Alignment
+Plug 'jc00ke/vim-tomdoc'     " Tomdoc snippets
 
 " Search
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'mileszs/ack.vim'
 " Plug 'henrik/vim-indexed-search'
 Plug 'skwp/greplace.vim'
 " Plug 'nelstrom/vim-visual-star-search'
 
 " Improvements
+Plug 'alvan/vim-closetag'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kana/vim-textobj-user'   " Required for nelstrom/vim-textobj-rubyblock
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'sjl/gundo.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
@@ -68,25 +83,19 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'sjl/gundo.vim'
-" Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'chrisbra/NrrwRgn'
-" Plug 'vim-scripts/ZoomWin'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
-Plug 'michaeljsmith/vim-indent-object'
+Plug 'vim-scripts/matchit.zip'
+" Plug 'vim-utils/vim-ruby-fold'
 
 call plug#end()
 
 " Plug 'vim-scripts/YankRing.vim' # Conflicts with ctrlp
+" Plug 'chrisbra/NrrwRgn'
+" Plug 'vim-scripts/ZoomWin'
 " Plug 'Raimondi/delimitMate'
 " Plug 'Shougo/neocomplete'
 " Plug 'briandoll/change-inside-surroundings.vim'
 " Plug 'godlygeek/tabular'
 " Plug 'vim-scripts/camelcasemotion'
-" Plug 'vim-scripts/matchit.zip'
 " Plug 'kristijanhusak/vim-multiple-cursors'
 " Plug 'Keithbsmiley/investigate.vim'
 " Plug 'christoomey/vim-tmux-navigator'
@@ -106,13 +115,10 @@ call plug#end()
 " Plug 'Valloric/MatchTagAlways'
 " Plug 'EinfachToll/DidYouMean'
 " Plug 'michaeljsmith/vim-indent-object'
-" Plug 'vim-utils/vim-ruby-fold'
 " Plug 'christoomey/vim-tmux-navigator'
 " Plug 'chrisbra/csv.vim'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'NLKNguyen/papercolor-theme'
-" Plug 'kana/vim-textobj-user'
-" Plug 'nelstrom/vim-textobj-rubyblock'
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'mattn/webapi-vim'
 " Plug 'mzlogin/vim-markdown-toc'
