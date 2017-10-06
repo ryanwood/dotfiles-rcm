@@ -291,6 +291,8 @@ set smartcase       " ...unless we type a capital
 " More natural window panes
 set splitbelow
 set splitright
+" set winheight=30   " This is causing issues when the window is too small
+" set winminheight=5
 
 " " Easy Switching - Now built in the vim-tmux-navigator plugin
 " map <c-h> <c-w>h
