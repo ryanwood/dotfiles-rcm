@@ -329,6 +329,13 @@ nmap <leader>bd :bp<bar>bd#<CR>
 nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when hitting return
 
 nmap <leader>T :enew<cr>
+
+" Clone a paragraph
+nnoremap <leader>cp yap<S-}>p
+
+"Clone a Ruby/RSpec Method
+nmap <leader>cm yar%o<esc>p
+
 " ======================================================== }}}
 " Mappings {{{
 
