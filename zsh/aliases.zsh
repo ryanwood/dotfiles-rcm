@@ -90,6 +90,7 @@ alias gmf='git merge --ff-only'
 alias gp='git push'
 alias gpd='git push --dry-run'
 alias gpristine='git reset --hard && git clean -dfx'
+alias gpu='git push -u'
 
 alias gr='git reset'
 alias gra='git remote add'
@@ -162,11 +163,13 @@ alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool true 
 alias start="vim ~/start.txt"
 
 alias t="bundle exec rspec"
-alias td="tmux a -t deerlab"
 alias testlog='tail -f log/test.log'
 alias tff="bundle exec rspec --fail-fast"
 alias tfo="bundle exec rspec --only-failures"
-alias tm="tmux a -t moonclerk"
+alias tma="tmux a -t "
+alias tmb="tmux a -t billing"
+alias tmd="tmux a -t deerlab"
+alias tmm="tmux a -t moonclerk"
 # Git
 
 # No arguments: `git status`
