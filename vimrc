@@ -180,7 +180,10 @@ if $TERM_PROGRAM =~ "iTerm"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
 
-"
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+
+
 " ======================================================== }}}
 " Theme {{{
 
