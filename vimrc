@@ -305,10 +305,8 @@ map <c-x> <c-w>x
 map <Leader>= <C-w>=
 
 
-if has("gui_running") && has("autocmd")
-  " Automatically resize splits when resizing MacVim window
-  autocmd VimResized * wincmd =
-endif
+" Automatically resize splits when resizing MacVim window
+" autocmd VimResized * wincmd =
 
 " ======================================================== }}}
 " Utility {{{
