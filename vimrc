@@ -143,6 +143,7 @@ set autoread                    " Reload files changed outside vim
 set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
 " set colorcolumn=80,100
 set clipboard=unnamed
+set updatetime=250              " Needed for vim-gitgutter to refresh page afte 250ms vs 4s (default)
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
