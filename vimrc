@@ -392,6 +392,22 @@ cnoremap <expr> <C-P> getcmdline()[getcmdpos()-2] ==# ' ' ? expand('%:p:h') : "\
 
 set modelines=1
 
+" Promote a variable to an rspec let statement.
+"
+" Convert lines that look like `x = y` to lines that look like
+" `let(:x){ y }`.
+
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+
+command! PromoteToLet :call PromoteToLet()
+nmap <leader>p :PromoteToLet<cr>
+
 " ======================================================== }}}
 " Plugin Settings {{{
 
@@ -468,7 +484,7 @@ endif
 let g:ctrlp_working_path_mode = 'r'
 
 " Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
+" nmap <leader>p :CtrlP<cr>  " Using <leader>p for Promote to Let
 
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
