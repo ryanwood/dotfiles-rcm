@@ -25,7 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
-Plug 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'keith/rspec.vim'
 Plug 'slim-template/vim-slim'
@@ -45,12 +45,12 @@ Plug 'stephpy/vim-yaml'
 " Plug 'honza/vim-snippets'
 
 " Tools
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
 " Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
-Plug 'mjacobus/vim-rspec-focus'
+" Plug 'mattn/emmet-vim'
+" Plug 'mjacobus/vim-rspec-focus'
 " Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec'  " Test Runners
 Plug 'tpope/vim-eunuch'      " Rename and other Unix helpers
@@ -64,16 +64,13 @@ Plug 'mileszs/ack.vim'
 Plug 'skwp/greplace.vim'
 " Plug 'nelstrom/vim-visual-star-search'
 
-" Improvements
-Plug 'alvan/vim-closetag'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'jiangmiao/auto-pairs'
+" Text Objects
 Plug 'kana/vim-textobj-user'   " Required for nelstrom/vim-textobj-rubyblock
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'sjl/gundo.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'glts/vim-textobj-comment'
+
+" " Improvements
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -81,27 +78,24 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
 Plug 'vim-scripts/matchit.zip'
-" Plug 'vim-utils/vim-ruby-fold'
+" Plug 'alvan/vim-closetag'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'jiangmiao/auto-pairs'
+Plug 'sjl/gundo.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
 
-" Plug 'vim-scripts/YankRing.vim' # Conflicts with ctrlp
-" Plug 'chrisbra/NrrwRgn'
-" Plug 'vim-scripts/ZoomWin'
-" Plug 'Raimondi/delimitMate'
-" Plug 'Shougo/neocomplete'
 " Plug 'briandoll/change-inside-surroundings.vim'
 " Plug 'godlygeek/tabular'
 " Plug 'vim-scripts/camelcasemotion'
 " Plug 'kristijanhusak/vim-multiple-cursors'
 " Plug 'Keithbsmiley/investigate.vim'
-" Plug 'christoomey/vim-tmux-navigator'
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'bogado/file-line'
-" Plug 'mattn/webapi-vim'
-" Plug 'tomtom/tlib_vim'
-" Plug 'vim-scripts/AnsiEsc.vim'
 " Plug 'vim-scripts/AutoTag'
 " Plug 'vim-scripts/lastpos.vim'
 " Plug 'vim-scripts/sudo.vim'
@@ -112,11 +106,8 @@ call plug#end()
 " Plug 'kien/rainbow_parentheses.vim'
 " Plug 'Valloric/MatchTagAlways'
 " Plug 'EinfachToll/DidYouMean'
-" Plug 'michaeljsmith/vim-indent-object'
-" Plug 'christoomey/vim-tmux-navigator'
 " Plug 'chrisbra/csv.vim'
 " Plug 'ludovicchabant/vim-gutentags'
-" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'mattn/webapi-vim'
 " Plug 'mzlogin/vim-markdown-toc'
