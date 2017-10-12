@@ -13,7 +13,7 @@ Plug 'morhetz/gruvbox'
 
 " Project
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-obsession'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'christoomey/vim-tmux-navigator'
@@ -21,7 +21,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " Git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
@@ -557,13 +557,6 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 " gundo.vim {{{
 
 nnoremap <leader>u :GundoToggle<CR>
-
-" ======================================================== }}}
-" nerdtree.vim {{{
-
-map <leader>n :NERDTreeToggle<cr>
-map <leader>fn :NERDTreeFind<cr>
-map <leader>mn :NERDTreeMirror<cr>
 
 " ======================================================== }}}
 " tcomment.vim {{{
