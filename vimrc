@@ -74,8 +74,8 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'sjl/gundo.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
@@ -559,18 +559,6 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 nnoremap <leader>u :GundoToggle<CR>
 
 " ======================================================== }}}
-" tcomment.vim {{{
-
-if has("gui_macvim") && has("gui_running")
-  map <D-/> :TComment<CR>
-  imap <D-/> <Esc>:TComment<CR>i
-else
-  map <leader>/ :TComment<CR>
-endif
-
-call tcomment#DefineType('slim', '/ %s')
-
-" ======================================================== }}}
 " tslime.vim {{{
 
 let g:tslime_always_current_session = 1
@@ -589,6 +577,11 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
+
+" ======================================================== }}}
+" vim-commentary {{{
+
+autocmd FileType slim setlocal commentstring=/\ %s
 
 " ======================================================== }}}
 " vim-rspec.vim {{{
