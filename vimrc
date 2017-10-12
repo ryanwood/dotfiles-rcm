@@ -7,11 +7,9 @@ scriptencoding utf-8
 call plug#begin()
 
 " Appearance
-Plug 'itchyny/lightline.vim'
 " Plug 'mhartington/oceanic-next'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'ryanwood/lightline-gruvbox.vim'
 
 " Project
 Plug 'ctrlpvim/ctrlp.vim'
@@ -140,7 +138,6 @@ set showmode                    " Show current mode down the bottom
 set gcr=a:blinkon0              " Disable cursor blink
 set visualbell                  " No sounds
 set autoread                    " Reload files changed outside vim
-set laststatus=2                " Needed for lightline - https://github.com/itchyny/lightline.vim#configuration-tutorial
 " set colorcolumn=80,100
 set clipboard=unnamed
 set updatetime=250              " Needed for vim-gitgutter to refresh page afte 250ms vs 4s (default)
@@ -560,61 +557,6 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 " gundo.vim {{{
 
 nnoremap <leader>u :GundoToggle<CR>
-
-" ======================================================== }}}
-" lightline.vim {{{
-
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightlineFugitive',
-      \   'readonly': 'LightlineReadonly',
-      \   'modified': 'LightlineModified',
-      \   'filename': 'LightlineFilename'
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
-
-function! LightlineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightlineReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "\ue0a2"
-  else
-    return ""
-  endif
-endfunction
-
-function! LightlineFugitive()
-  if exists("*fugitive#head")
-    let branch = fugitive#head()
-    return branch !=# '' ? "\ue0a0 ".branch : ''
-  endif
-  return ''
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
 
 " ======================================================== }}}
 " nerdtree.vim {{{
