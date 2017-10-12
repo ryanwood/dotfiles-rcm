@@ -133,6 +133,7 @@ set autoread                    " Reload files changed outside vim
 set clipboard=unnamed
 set updatetime=250              " Needed for vim-gitgutter to refresh page afte 250ms vs 4s (default)
 set mouse=a                     " Set mouse to scroll vim window - not terminal history"
+set re=1                        " Use the older regex engine - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
