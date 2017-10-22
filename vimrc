@@ -265,7 +265,7 @@ set wildignore+=bower_components/**
 " ======================================================== }}}
 " Scrolling {{{
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set scrolloff=3         "Start scrolling when we're X lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
@@ -291,14 +291,13 @@ set smartcase       " ...unless we type a capital
 " map <c-j> <c-w>j
 " map <c-k> <c-w>k
 " map <c-l> <c-w>l
-map <c-x> <c-w>x
+noremap <c-x> <c-w>x
 
 " Adjust viewports to the same size
-map <Leader>= <C-w>=
-
+nnoremap <Leader>= <C-w>=
 
 " Automatically resize splits when resizing MacVim window
-" autocmd VimResized * wincmd =
+autocmd VimResized * wincmd =
 
 " ======================================================== }}}
 " Utility {{{
@@ -315,10 +314,14 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 "   autocmd bufwritepost .vimrc source $MYVIMRC
 " endif
 
-nmap <leader>w :w<cr><esc>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+
 " Delete buffer but keep window. http://stackoverflow.com/questions/4298910/vim-close-buffer-but-not-split-window
 nmap <leader>bd :bp<bar>bd#<CR>
 nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when hitting return
+" nnoremap <ESC> :nohlsearch<BAR>:echo<CR><ESC>
+" nnoremap <esc> :noh<cr><esc>
 
 nmap <leader>T :enew<cr>
 
@@ -362,10 +365,10 @@ nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+nmap <leader>ew :e %%
+nmap <leader>es :sp %%
+nmap <leader>ev :vsp %%
+nmap <leader>et :tabe %%
 
 " Swap two words
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
@@ -411,6 +414,23 @@ endfunction
 command! PromoteToLet :call PromoteToLet()
 nmap <leader>p :PromoteToLet<cr>
 
+let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_winsize = 25
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
+
+" Easily Reformat Paragraph
+noremap <leader>a =ap
+
+" Apply macros with ease
+nnoremap Q @q
+vnoremap Q :norm @q<cr>
+
 " ======================================================== }}}
 " Plugin Settings {{{
 
@@ -423,7 +443,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-map <leader>ff :Ack<space>
+nmap <leader>ff :Ack<space>
 
 " ======================================================== }}}
 " buffergator.vim {{{
@@ -523,7 +543,7 @@ nnoremap <leader>u :GundoToggle<CR>
 " tslime.vim {{{
 
 let g:tslime_always_current_session = 1
-nmap <C-c>r <Plug>SetTmuxVar
+nmap <C-c>r <Plug>SetTmuxVars
 
 " ======================================================== }}}
 " vim-better-whitespace.vim {{{
@@ -552,11 +572,22 @@ let g:notes_directories = ['~/.notes']
 " ======================================================== }}}
 " vim-rspec.vim {{{
 
-let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
+nmap <Leader>t :call RunCurrentSpecFile()<CR>
+nmap <Leader>s :call RunNearestSpec()<CR>
+nmap <Leader>l :call RunLastSpec()<CR>
+" nmap <Leader>a :call RunAllSpecs()<CR>
+
+" ======================================================== }}}
+" vim-ruby {{{
+
+let g:ruby_indent_access_modifier_style = 'outdent'
+let g:ruby_indent_assignment_style = 'variable'
+
+" ======================================================== }}}
+" vim-slim.vim {{{
+
+" autocmd BufNewFile,BufRead *.skim setlocal filetype=slim
 
 " ======================================================== }}}
 " vim-sneak.vim {{{
@@ -577,11 +608,5 @@ nnoremap <leader>fr :RemoveAllFocusTags<CR>
 " nnoremap C-y :YRShow<CR>
 
 " ======================================================== }}}
-" zoomwin.vim {{{
-
-map <leader>zw :ZoomWin<CR>
-
-" ======================================================== }}}
-
 " ======================================================== }}}
 "// " vim:foldmethod=marker:foldlevel=1:foldenable
