@@ -25,7 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
-" Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'keith/rspec.vim'
 Plug 'slim-template/vim-slim'
@@ -39,10 +39,10 @@ Plug 'wellbredgrapefruit/tomdoc.vim'
 Plug 'stephpy/vim-yaml'
 
 " Snippets
-" Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
-" Plug 'tomtom/tlib_vim'               " Dependency for snipmate
-" Plug 'garbas/vim-snipmate'
-" Plug 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
+Plug 'tomtom/tlib_vim'               " Dependency for snipmate
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " Tools
 " Plug 'ervandew/supertab'
@@ -86,6 +86,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sjl/gundo.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'xolox/vim-misc'   " Required for vim-notes
+Plug 'xolox/vim-notes'
 
 call plug#end()
 
@@ -133,7 +135,8 @@ set autoread                    " Reload files changed outside vim
 set clipboard=unnamed
 set updatetime=250              " Needed for vim-gitgutter to refresh page afte 250ms vs 4s (default)
 set mouse=a                     " Set mouse to scroll vim window - not terminal history"
-set re=1                        " Use the older regex engine - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+set re=1                        " Faster Ruby (use the older regex engine) - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+set lazyredraw                  " Attempt to speed things up
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -169,8 +172,8 @@ if $TERM_PROGRAM =~ "iTerm"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
 
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+" autocmd WinEnter * setlocal cursorline
+" autocmd WinLeave * setlocal nocursorline
 
 
 " ======================================================== }}}
@@ -540,6 +543,11 @@ let g:closetag_close_shortcut = '<leader>>'
 " vim-commentary {{{
 
 autocmd FileType slim setlocal commentstring=/\ %s
+
+" ======================================================== }}}
+" vim-notes {{{
+
+let g:notes_directories = ['~/.notes']
 
 " ======================================================== }}}
 " vim-rspec.vim {{{
