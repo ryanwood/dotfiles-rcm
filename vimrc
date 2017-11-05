@@ -45,7 +45,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 
 " Tools
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
 " Plug 'majutsushi/tagbar'
