@@ -345,8 +345,8 @@ nmap <leader>cm yar%o<esc>p
 " Toggle current fold (Disabled now that we are using Space as leader)
 " nnoremap <Space> za
 
-" format the entire file
-nnoremap <leader>fef :normal! gg=G``<CR>
+" format (align) the entire file
+nnoremap <leader>a :normal! gg=G``<CR>
 
 " upper/lower word
 " nmap <leader>u mQviwU`Q
@@ -425,9 +425,6 @@ let g:netrw_winsize = 25
 "   autocmd VimEnter * :Vexplore
 " augroup END
 map <leader>n :Vexplore<cr>
-
-" Easily Reformat Paragraph
-noremap <leader>a =ap
 
 " Apply macros with ease
 nnoremap Q @q
