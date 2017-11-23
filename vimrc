@@ -56,6 +56,7 @@ Plug 'thoughtbot/vim-rspec'  " Test Runners
 Plug 'tpope/vim-eunuch'      " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'      " Alignment
 Plug 'jc00ke/vim-tomdoc'     " Tomdoc snippets
+Plug 'ngmy/vim-rubocop'
 
 " Search
 " Plug 'justinmk/vim-sneak'
@@ -576,6 +577,12 @@ nmap <Leader>t :call RunCurrentSpecFile()<CR>
 nmap <Leader>s :call RunNearestSpec()<CR>
 nmap <Leader>l :call RunLastSpec()<CR>
 " nmap <Leader>a :call RunAllSpecs()<CR>
+
+" ======================================================== }}}
+" vim-rubocop {{{
+
+let g:vimrubocop_keymap = 0
+nmap <Leader>r :RuboCop<CR>
 
 " ======================================================== }}}
 " vim-ruby {{{
