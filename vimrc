@@ -37,6 +37,7 @@ Plug 'tpope/vim-liquid'
 Plug 'keith/tmux.vim'
 Plug 'wellbredgrapefruit/tomdoc.vim'
 Plug 'stephpy/vim-yaml'
+Plug 'elmcast/elm-vim'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
