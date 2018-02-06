@@ -444,7 +444,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-nmap <leader>ff :Ack<space>
+nmap <leader>ff :Ack!<space>
 
 " ======================================================== }}}
 " buffergator.vim {{{
