@@ -477,6 +477,7 @@ nmap <leader>bl :BuffergatorOpen<cr>
 " ctrlp.vim {{{
 
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
@@ -490,7 +491,6 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 else
   " Fall back to using git ls-files if Ag is not available
-  let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|bower_components|node_modules'
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
 
