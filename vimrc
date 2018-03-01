@@ -54,6 +54,7 @@ Plug 'jgdavey/tslime.vim'
 " Plug 'mjacobus/vim-rspec-focus'
 " Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec'  " Test Runners
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'      " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'      " Alignment
 Plug 'jc00ke/vim-tomdoc'     " Tomdoc snippets
@@ -573,11 +574,17 @@ let g:notes_directories = ['~/.notes']
 " ======================================================== }}}
 " vim-rspec.vim {{{
 
-" let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
-nmap <Leader>t :call RunCurrentSpecFile()<CR>
-nmap <Leader>s :call RunNearestSpec()<CR>
-nmap <Leader>l :call RunLastSpec()<CR>
-" nmap <Leader>a :call RunAllSpecs()<CR>
+" Fix a bug with tmux-2.3 and vim-dispatch (note the trailing space)
+"
+" https://github.com/tpope/vim-dispatch/issues/192
+set shellpipe=2>&1\|\ tee\ "Adding comment to allow final space
+
+" let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = "Dispatch rspec {spec}"
+nmap <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
+nmap <Leader>s :w<CR>:call RunNearestSpec()<CR>
+nmap <Leader>l :w<CR>:call RunLastSpec()<CR>
+nmap <Leader>a :w<CR>:call RunAllSpecs()<CR>
 
 " ======================================================== }}}
 " vim-rubocop {{{
