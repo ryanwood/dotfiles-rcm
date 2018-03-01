@@ -345,8 +345,16 @@ nmap <leader>cm yar%o<esc>p
 " nmap <silent> <F4> :set invpaste<CR>:set paste?<CR>
 " imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
-" Toggle current fold (Disabled now that we are using Space as leader)
-" nnoremap <Space> za
+" Toggle current fold
+nnoremap <leader>x za
+vnoremap <leader>x za
+
+" "Refocus" folds
+nnoremap <leader>z zMzvzz
+
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+nnoremap zO zCzO
 
 " format (align) the entire file
 nnoremap <leader>a :normal! gg=G``<CR>
