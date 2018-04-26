@@ -301,8 +301,8 @@ vmap <tab> %
 " Windows {{{
 
 " More natural window panes
-set splitbelow
-set splitright
+" set splitbelow
+" set splitright
 " set winheight=30   " This is causing issues when the window is too small
 " set winminheight=5
 
