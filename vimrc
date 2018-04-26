@@ -550,6 +550,27 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 nnoremap <leader>u :GundoToggle<CR>
 
 " ======================================================== }}}
+" Seeing Is Believing {{{
+
+" https://github.com/JoshCheek/seeing_is_believing/wiki/Editor-Integration
+
+" Assumes you have a Ruby with SiB available in the PATH
+" If it doesn't work, you may need to `gem install seeing_is_believing`
+
+" Annotate every line
+  nmap <leader>saa :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
+" Remove annotations
+  nmap <leader>sc :%.!seeing_is_believing --clean<CR>;
+
+" Mark the current line for annotation
+  nmap <leader>sm A # => <Esc>
+" Mark the highlighted lines for annotation
+  vmap <leader>sm :norm A # => <Esc>
+
+" Annotate marked lines
+  nmap <leader>sam :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+
+" ======================================================== }}}
 " tslime.vim {{{
 
 let g:tslime_always_current_session = 1
