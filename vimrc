@@ -344,6 +344,9 @@ nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when
 " nnoremap <ESC> :nohlsearch<BAR>:echo<CR><ESC>
 " nnoremap <esc> :noh<cr><esc>
 
+" Close all buffers but the current one
+nmap <leader>bo :%bd<cr>:e#<cr>
+
 nmap <leader>T :enew<cr>
 
 " Clone a paragraph
