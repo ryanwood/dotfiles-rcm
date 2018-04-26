@@ -289,8 +289,14 @@ set sidescroll=1
 
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
+set showmatch
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
+set gdefault        " Default to /g at the end of regexes
+
+" Use the tab key to navigate brackets; allow remap for matchit
+nmap <tab> %
+vmap <tab> %
 
 " ======================================================== }}}
 " Windows {{{
