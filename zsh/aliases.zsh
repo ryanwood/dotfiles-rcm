@@ -162,14 +162,18 @@ alias s='git status -sb'
 alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
 alias start="vim ~/start.txt"
 
-alias t="bundle exec rspec"
+alias t="rspec"
+alias tb="bundle exec rspec"
 alias testlog='tail -f log/test.log'
-alias tff="bundle exec rspec --fail-fast"
-alias tfo="bundle exec rspec --only-failures"
+alias tff="rspec --fail-fast"
+alias tfo="rspec --only-failures"
 alias tma="tmux a -t "
 alias tmb="tmux a -t billing"
 alias tmd="tmux a -t deerlab"
 alias tmm="tmux a -t moonclerk"
+alias twf="rspec --exclude-pattern 'spec/features/**/*_spec.rb'"
+alias twj="rspec --tags ~js spec/"
+
 # Git
 
 # No arguments: `git status`
