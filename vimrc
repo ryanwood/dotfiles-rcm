@@ -615,7 +615,7 @@ let g:closetag_close_shortcut = '<leader>>'
 " vim-commentary {{{
 
 autocmd FileType slim setlocal commentstring=/\ %s
-autocmd FileType yaml setlocal commentstring=#\ %s
+autocmd FileType yml setlocal commentstring=#\ %s
 
 " ======================================================== }}}
 " vim-notes {{{
