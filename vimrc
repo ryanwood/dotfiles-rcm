@@ -585,6 +585,11 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Annotate marked lines
   nmap <leader>sam :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+" ======================================================== }}}
+" splitjoin {{{
+
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
 
 " ======================================================== }}}
 " tslime.vim {{{
