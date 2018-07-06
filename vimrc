@@ -22,7 +22,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
 Plug 'vim-ruby/vim-ruby'
