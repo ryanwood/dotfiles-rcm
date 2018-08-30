@@ -380,7 +380,7 @@ nmap <leader>cm yar%o<esc>p
 " imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
 " format (align) the entire file
-nnoremap <leader>a :normal! gg=G``<CR>
+nnoremap <leader>fef :normal! gg=G``<CR>
 
 " upper/lower word
 " nmap <leader>u mQviwU`Q
