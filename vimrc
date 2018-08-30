@@ -472,6 +472,7 @@ if executable('ag')
 endif
 
 nmap <leader>ff :Ack!<space>
+nmap <leader>fs :AckFromSearch .<cr>
 
 " ======================================================== }}}
 " buffergator.vim {{{
