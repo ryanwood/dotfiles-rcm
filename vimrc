@@ -54,11 +54,11 @@ Plug 'jgdavey/tslime.vim'
 " Plug 'mattn/emmet-vim'
 " Plug 'mjacobus/vim-rspec-focus'
 " Plug 'scrooloose/syntastic'
-Plug 'thoughtbot/vim-rspec'  " Test Runners
+Plug 'thoughtbot/vim-rspec'         " Test Runners
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-eunuch'      " Rename and other Unix helpers
-Plug 'tommcdo/vim-lion'      " Alignment
-Plug 'jc00ke/vim-tomdoc'     " Tomdoc snippets
+Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
+Plug 'tommcdo/vim-lion'             " Alignment
+Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'ngmy/vim-rubocop'
 
 " Search
@@ -69,7 +69,7 @@ Plug 'skwp/greplace.vim'
 " Plug 'nelstrom/vim-visual-star-search'
 
 " Text Objects
-Plug 'kana/vim-textobj-user'   " Required for nelstrom/vim-textobj-rubyblock
+Plug 'kana/vim-textobj-user'        " Required for nelstrom/vim-textobj-rubyblock
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'glts/vim-textobj-comment'
