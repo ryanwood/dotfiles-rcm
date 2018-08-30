@@ -304,6 +304,12 @@ set gdefault        " Default to /g at the end of regexes
 " Use the tab key to navigate brackets; allow remap for matchit
 nmap <tab> %
 vmap <tab> %
+" ======================================================== }}}
+" Words {{{
+
+" Make dashed word, like CSS class act as a word (user-name)
+" https://til.hashrocket.com/posts/t8osyzywau-treat-words-with-dash-as-a-word-in-vim
+set iskeyword+=-
 
 " ======================================================== }}}
 " Windows {{{
