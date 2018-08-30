@@ -162,6 +162,14 @@ autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+" Mouse won't work past 223rd column without this...
+" https://github.com/vim/vim/issues/2309
+if has("mouse_sgr")
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+end
+
 " ======================================================== }}}
 " tmux Integration {{{
 
