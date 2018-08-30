@@ -427,8 +427,10 @@ map <Up> gk
 nmap <leader>hs :set hlsearch! hlsearch?<CR>
 
 " Make regex behave like Ruby or PRCE, not vim's weirdness
-nnoremap / /\v
-vnoremap / /\v
+" Commented because this adds to the search phrase and breaks :AckFromSearch
+"
+" nnoremap / /\v
+" vnoremap / /\v
 
 " Make Y yank till end of line
 nnoremap Y yg_
