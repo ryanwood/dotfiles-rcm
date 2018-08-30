@@ -60,6 +60,8 @@ Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'             " Alignment
 Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'ngmy/vim-rubocop'
+" Plug 'rlue/vim-fold-rspec'        " Better RSpec folding
+Plug 'scottmcginness/vim-foldtext'  " Better fold text
 
 " Search
 " Plug 'justinmk/vim-sneak'
@@ -628,6 +630,30 @@ autocmd FileType slim setlocal commentstring=/\ %s
 autocmd FileType yml setlocal commentstring=#\ %s
 
 " ======================================================== }}}
+" vim-fold-rspec {{{
+" By default, vim-fold-rspec honors global fold settings, override here:
+
+" let g:fold_rspec_foldenable = 0      " disables folding (toggle with `zi`)
+" let g:fold_rspec_foldlevel = 2       " sets initial open/closed state of all folds (open unless nested more than two levels deep)
+" let g:fold_rspec_foldcolumn = 4      " shows a 4-character column on the lefthand side of the window displaying the document's fold structure
+" let g:fold_rspec_foldclose = 'all'   " closes folds automatically when the cursor is moved out of them (only applies to folds deeper than 'foldlevel')
+" let g:fold_rspec_foldminlines = 3    " disables closing of folds containing two lines or fewer
+
+" ======================================================== }}}
+" vim-foldtext {{{
+
+" let g:FoldText_placeholder = '<...>'
+let g:FoldText_line = 'L'
+let g:FoldText_level = 'Z'
+let g:FoldText_whole = 'O'
+" let g:FoldText_division = '/'
+" let g:FoldText_multiplication = '*'
+" let g:FoldText_epsilon = '0'
+" let g:FoldText_denominator = 25
+
+set foldtext=CustomFoldText()
+
+" ======================================================== }}}
 " vim-notes {{{
 
 let g:notes_directories = ['~/.notes']
@@ -658,6 +684,7 @@ nmap <Leader>r :RuboCop<CR>
 
 let g:ruby_indent_access_modifier_style = 'outdent'
 let g:ruby_indent_assignment_style = 'variable'
+let g:ruby_indent_block_style = 'do'
 
 " ======================================================== }}}
 " vim-slim.vim {{{
