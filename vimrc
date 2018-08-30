@@ -62,6 +62,7 @@ Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'ngmy/vim-rubocop'
 " Plug 'rlue/vim-fold-rspec'        " Better RSpec folding
 Plug 'scottmcginness/vim-foldtext'  " Better fold text
+Plug 'tpope/vim-jdaddy'
 
 " Search
 " Plug 'justinmk/vim-sneak'
