@@ -356,9 +356,12 @@ nnoremap <leader>q :q<cr>
 
 " Delete buffer but keep window. http://stackoverflow.com/questions/4298910/vim-close-buffer-but-not-split-window
 nmap <leader>bd :bp<bar>bd#<CR>
-nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>  " GRB: clear the search buffer when hitting return
-" nnoremap <ESC> :nohlsearch<BAR>:echo<CR><ESC>
-" nnoremap <esc> :noh<cr><esc>
+
+" Start a search based on the visually-selected text
+vnoremap // y/<C-R>"<CR>
+
+" Clear search result when hitting enter
+nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>
 
 " Close all buffers but the current one
 nmap <leader>bo :%bd<cr>:e#<cr>
