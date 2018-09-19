@@ -12,16 +12,15 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 
 " Project
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-obsession'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'christoomey/vim-tmux-navigator'
 
 " Git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
 Plug 'vim-ruby/vim-ruby'
@@ -49,27 +48,20 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
-" Plug 'majutsushi/tagbar'
 " Plug 'mattn/emmet-vim'
-" Plug 'mjacobus/vim-rspec-focus'
-" Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec'         " Test Runners
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'             " Alignment
 Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'ngmy/vim-rubocop'
-" Plug 'rlue/vim-fold-rspec'        " Better RSpec folding
 Plug 'scottmcginness/vim-foldtext'  " Better fold text
 Plug 'tpope/vim-jdaddy'
 
 " Search
-" Plug 'justinmk/vim-sneak'
-" Plug 'henrik/vim-indexed-search'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'skwp/greplace.vim'
-" Plug 'nelstrom/vim-visual-star-search'
 
 " Text Objects
 Plug 'kana/vim-textobj-user'        " Required for nelstrom/vim-textobj-rubyblock
@@ -588,17 +580,6 @@ let g:closetag_close_shortcut = '<leader>>'
 " vim-commentary {{{
 
 autocmd FileType slim setlocal commentstring=/\ %s
-autocmd FileType yml setlocal commentstring=#\ %s
-
-" ======================================================== }}}
-" vim-fold-rspec {{{
-" By default, vim-fold-rspec honors global fold settings, override here:
-
-" let g:fold_rspec_foldenable = 0      " disables folding (toggle with `zi`)
-" let g:fold_rspec_foldlevel = 2       " sets initial open/closed state of all folds (open unless nested more than two levels deep)
-" let g:fold_rspec_foldcolumn = 4      " shows a 4-character column on the lefthand side of the window displaying the document's fold structure
-" let g:fold_rspec_foldclose = 'all'   " closes folds automatically when the cursor is moved out of them (only applies to folds deeper than 'foldlevel')
-" let g:fold_rspec_foldminlines = 3    " disables closing of folds containing two lines or fewer
 
 " ======================================================== }}}
 " vim-foldtext {{{
@@ -646,29 +627,6 @@ nmap <Leader>r :RuboCop<CR>
 let g:ruby_indent_access_modifier_style = 'outdent'
 let g:ruby_indent_assignment_style = 'variable'
 let g:ruby_indent_block_style = 'do'
-
-" ======================================================== }}}
-" vim-slim.vim {{{
-
-" autocmd BufNewFile,BufRead *.skim setlocal filetype=slim
-
-" ======================================================== }}}
-" vim-sneak.vim {{{
-
-let g:sneak#label = 1
-
-" ======================================================== }}}
-" vim_rspec_focus.vim {{{
-
-nnoremap <leader>fa :AddFocusTag<CR>
-nnoremap <leader>fr :RemoveAllFocusTags<CR>
-
-" ======================================================== }}}
-" yankring.vim {{{
-
-" let g:yankring_history_file = '.yankring-history'
-" nnoremap ,yr :YRShow<CR>
-" nnoremap C-y :YRShow<CR>
 
 " ======================================================== }}}
 " ======================================================== }}}
