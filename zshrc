@@ -56,3 +56,5 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

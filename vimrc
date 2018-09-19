@@ -12,7 +12,6 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 
 " Project
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-obsession'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -66,8 +65,9 @@ Plug 'tpope/vim-jdaddy'
 
 " Search
 " Plug 'justinmk/vim-sneak'
-Plug 'mileszs/ack.vim'
 " Plug 'henrik/vim-indexed-search'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'skwp/greplace.vim'
 " Plug 'nelstrom/vim-visual-star-search'
 
@@ -473,16 +473,6 @@ vnoremap Q :norm @q<cr>
 " If we source from different files - becomes less manageable
 " so ~/.vim/settings.vim
 
-" ack.vim {{{
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-nmap <leader>ff :Ack!<space>
-nmap <leader>fs :AckFromSearch .<cr>
-
-" ======================================================== }}}
 " buffergator.vim {{{
 
 let g:buffergator_sort_regime = "mru"
@@ -510,48 +500,6 @@ nmap <leader>kk :BuffergatorMruCycleNext<cr>
 nmap <leader>bl :BuffergatorOpen<cr>
 
 " ======================================================== }}}
-" ctrlp.vim {{{
-
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
-
-if exists("g:ctrlp_user_command")
-  unlet g:ctrlp_user_command
-endif
-if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command =
-        \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$" --hidden'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-else
-  " Fall back to using git ls-files if Ag is not available
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
-endif
-
-" Default to filename searches - so that appctrl will find application
-" controller
-" let g:ctrlp_by_filename = 1
-
-" Don't jump to already open window. This is annoying if you are maintaining
-" several Tab workspaces and want to open two windows into the same file.
-" let g:ctrlp_switch_buffer = 0
-
-" Use the nearest .git directory as the cwd
-" This makes a lot of sense if you are working on a project that is in version
-" control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'r'
-
-" Use a leader instead of the actual named binding
-" nmap <leader>p :CtrlP<cr>  " Using <leader>p for Promote to Let
-
-" Easy bindings for its various modes
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
-
-" ======================================================== }}}
 " fugitive.vim {{{
 
 nnoremap <leader>ga :Git add %:p<CR><CR>
@@ -564,6 +512,13 @@ nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gt :Gcommit -v -q %:p<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>
+
+" ======================================================== }}}
+" fzf.vim {{{
+
+nnoremap <c-p> :Files<cr>
+nnoremap <leader>ff :Rg<space>
+nnoremap <leader>bb :Buffers<cr>
 
 " ======================================================== }}}
 " greplace.vim {{{
