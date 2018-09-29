@@ -14,4 +14,4 @@ source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
 # Use ripgrep so ignores will be respected and speeeeed
 # https://github.com/junegunn/fzf#respecting-gitignore
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
