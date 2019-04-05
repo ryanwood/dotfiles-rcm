@@ -430,6 +430,8 @@ nmap <leader>hs :set hlsearch! hlsearch?<CR>
 " Make Y yank till end of line
 nnoremap Y yg_
 
+nmap <leader>' cs"'
+
 ""
 "" Command-Line Mappings
 ""
