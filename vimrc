@@ -49,7 +49,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
 " Plug 'mattn/emmet-vim'
-Plug 'thoughtbot/vim-rspec'         " Test Runners
+Plug 'janko-m/vim-test'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'             " Alignment
@@ -605,21 +605,6 @@ set foldtext=CustomFoldText()
 let g:notes_directories = ['~/.notes']
 
 " ======================================================== }}}
-" vim-rspec.vim {{{
-
-" Fix a bug with tmux-2.3 and vim-dispatch (note the trailing space)
-"
-" https://github.com/tpope/vim-dispatch/issues/192
-set shellpipe=2>&1\|\ tee\ "Adding comment to allow final space
-
-" let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
-let g:rspec_command = "Dispatch rspec {spec}"
-nmap <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
-nmap <Leader>s :w<CR>:call RunNearestSpec()<CR>
-nmap <Leader>l :w<CR>:call RunLastSpec()<CR>
-nmap <Leader>a :w<CR>:call RunAllSpecs()<CR>
-
-" ======================================================== }}}
 " vim-rubocop {{{
 
 let g:vimrubocop_keymap = 0
@@ -631,6 +616,20 @@ nmap <Leader>r :RuboCop<CR>
 let g:ruby_indent_access_modifier_style = 'outdent'
 let g:ruby_indent_assignment_style = 'variable'
 let g:ruby_indent_block_style = 'do'
+
+" ======================================================== }}}
+" vim-test {{{
+
+let test#strategy = "basic"
+" let test#strategy = "dispatch"
+" let test#strategy = "vimterminal"
+" let test#strategy = "vimux"
+
+nmap <Leader>t :w<CR>:TestFile<CR>
+nmap <Leader>s :w<CR>:TestNearest<CR>
+nmap <Leader>l :w<CR>:TestLast<CR>
+nmap <Leader>a :w<CR>:TestSuite<CR>
+nmap <Leader>d :w<CR>:TestVisit<CR>
 
 " ======================================================== }}}
 " ======================================================== }}}
