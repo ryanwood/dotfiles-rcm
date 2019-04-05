@@ -461,6 +461,9 @@ nmap <leader>p :PromoteToLet<cr>
 nnoremap Q @q
 vnoremap Q :norm @q<cr>
 
+" Full Zoom the current pane in a new tab. :wq to go back to the pane.
+nnoremap <leader>fz :tabnew %<cr>
+
 " ======================================================== }}}
 " Plugin Settings {{{
 
