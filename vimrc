@@ -567,7 +567,9 @@ nmap <C-c>r <Plug>SetTmuxVars
 " ======================================================== }}}
 " vim-better-whitespace.vim {{{
 
-autocmd BufEnter * EnableStripWhitespaceOnSave
+let g:better_whitespace_enabled = 1
+let g:strip_whitespace_on_save = 1
+let g:strip_whitespace_confirm = 0
 
 " ======================================================== }}}
 " vim-closetag {{{
