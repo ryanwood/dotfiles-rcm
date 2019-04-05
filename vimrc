@@ -464,6 +464,9 @@ vnoremap Q :norm @q<cr>
 " Full Zoom the current pane in a new tab. :wq to go back to the pane.
 nnoremap <leader>fz :tabnew %<cr>
 
+" Reopen (find) the last closed pane and reopen in vertical split
+nmap <leader>fl :vs<bar>:b#<CR>
+
 " ======================================================== }}}
 " Plugin Settings {{{
 
