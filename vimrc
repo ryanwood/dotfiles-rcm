@@ -57,6 +57,7 @@ Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'ngmy/vim-rubocop'
 Plug 'scottmcginness/vim-foldtext'  " Better fold text
 Plug 'tpope/vim-jdaddy'
+" Plug 'w0rp/ale'
 
 " Search
 Plug '/usr/local/opt/fzf'
