@@ -130,6 +130,10 @@ alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 
 alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+alias hlp='heroku logs -r production'
+alias hls='heroku logs -r staging'
+alias hltp='heroku logs -t -r production'
+alias hlts='heroku logs -t -r staging'
 alias hrcp='heroku run console -r production'
 alias hrcs='heroku run console -r staging'
 
@@ -167,6 +171,7 @@ alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles -bool true 
 alias start="vim ~/start.txt"
 
 alias t="rspec"
+alias ta="trc && t && tsl"
 alias tb="bundle exec rspec"
 alias testlog='tail -f log/test.log'
 alias tff="rspec --fail-fast"
@@ -176,8 +181,10 @@ alias tmb="tmux a -t billing"
 alias tmd="tmux a -t deerlab"
 alias tml="tmux a -t luna"
 alias tmm="tmux a -t moonclerk"
-alias twf="rspec --exclude-pattern 'spec/features/**/*_spec.rb'"
-alias twj="rspec --tags ~js spec/"
+alias trc="bundle exec rubocop"
+alias tsl="bundle exec slim-lint app/**/*.slim"
+alias twos="rspec --exclude-pattern 'spec/system/**/*_spec.rb'"
+alias twoj="rspec --tags ~js spec/"
 
 # Git
 
