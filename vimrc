@@ -432,6 +432,11 @@ nnoremap Y yg_
 
 nmap <leader>' cs"'
 
+" Move visual block up/down with indentation
+xnoremap <C-j> :m'>+<CR>gv=gv
+xnoremap <C-k> :m-2<CR>gv=gv
+
+
 ""
 "" Command-Line Mappings
 ""
