@@ -1,3 +1,6 @@
+# Ensure Postgres 10 (keg only) is in the path
+export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
