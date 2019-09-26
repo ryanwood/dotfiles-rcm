@@ -171,6 +171,9 @@ if !has('nvim')
 	endif
 endif
 
+" Set unusual filetypes
+autocmd BufNewFile,BufRead *.jb set filetype=ruby
+
 " ======================================================== }}}
 " tmux Integration {{{
 
