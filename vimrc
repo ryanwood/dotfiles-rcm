@@ -16,6 +16,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-obsession'
+Plug 'vim-airline/vim-airline'
 
 " Git
 Plug 'tpope/vim-git'
