@@ -15,7 +15,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-obsession'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 
 " Git
 Plug 'tpope/vim-git'
@@ -553,7 +553,11 @@ set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
 " ======================================================== }}}
+" lightline.vim {{{
 
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 
 " ======================================================== }}}
 " nerdtree.vim {{{
