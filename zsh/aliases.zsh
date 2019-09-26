@@ -186,6 +186,10 @@ alias tsl="bundle exec slim-lint app/**/*.slim"
 alias twos="rspec --exclude-pattern 'spec/system/**/*_spec.rb'"
 alias twoj="rspec --tags ~js spec/"
 
+alias vim="nvim"
+alias vimdiff="nvim -d"
+
+
 # Git
 
 # No arguments: `git status`
