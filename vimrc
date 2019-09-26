@@ -651,8 +651,10 @@ let g:ruby_indent_block_style = 'do'
 " ======================================================== }}}
 " vim-test {{{
 
-let test#strategy = "basic"
-" let test#strategy = "dispatch"
+let g:dispatch_quickfix_height=25
+
+" let test#strategy = "basic"
+let test#strategy = "dispatch"
 " let test#strategy = "vimterminal"
 " let test#strategy = "vimux"
 
