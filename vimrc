@@ -330,6 +330,26 @@ nnoremap <Leader>= <C-w>=
 autocmd VimResized * wincmd =
 
 " ======================================================== }}}
+" Tabs {{{
+
+nnoremap <leader>] gt
+nnoremap <leader>[ gT
+
+" Close all except current tab
+nnoremap <leader>\ :tabonly<Enter>
+
+" Navigating tabs
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+
+" ======================================================== }}}
 " Utility {{{
 
 " jk is escape. I also map Caps Lock to escapse on OSX
@@ -345,7 +365,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " endif
 
 nnoremap <leader>w :w<cr>
-nnoremap <leader>q :q<cr>
 
 " Delete buffer but keep window. http://stackoverflow.com/questions/4298910/vim-close-buffer-but-not-split-window
 nmap <leader>bd :bp<bar>bd#<CR>
@@ -366,6 +385,10 @@ nnoremap <leader>cp yap<S-}>p
 
 "Clone a Ruby/RSpec Method
 nmap <leader>cm yar%o<esc>p
+
+" Fix <shift-O> after <esc> delay
+" https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=0
 
 " ======================================================== }}}
 " Mappings {{{
@@ -437,6 +460,7 @@ nmap <leader>' cs"'
 xnoremap <C-j> :m'>+<CR>gv=gv
 xnoremap <C-k> :m-2<CR>gv=gv
 
+nmap <leader>; :%s/
 
 ""
 "" Command-Line Mappings
@@ -497,10 +521,10 @@ let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_mru_cycle_loop = 1
 
 " Go to the previous buffer open
-nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+nmap <leader>j :BuffergatorMruCyclePrev<cr>
 
 " Go to the next buffer open
-nmap <leader>kk :BuffergatorMruCycleNext<cr>
+nmap <leader>k :BuffergatorMruCycleNext<cr>
 
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
