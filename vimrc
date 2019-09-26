@@ -163,11 +163,13 @@ autocmd FileChangedShellPost *
 
 " Mouse won't work past 223rd column without this...
 " https://github.com/vim/vim/issues/2309
-if has("mouse_sgr")
-  set ttymouse=sgr
-else
-  set ttymouse=xterm2
-end
+if !has('nvim')
+	if has("mouse_sgr")
+		set ttymouse=sgr
+	else
+		set ttymouse=xterm2
+	endif
+endif
 
 " ======================================================== }}}
 " tmux Integration {{{
