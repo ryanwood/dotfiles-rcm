@@ -23,20 +23,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Language/Syntax
-Plug 'vim-ruby/vim-ruby'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
-Plug 'keith/rspec.vim'
-Plug 'slim-template/vim-slim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-liquid'
-Plug 'keith/tmux.vim'
-Plug 'wellbredgrapefruit/tomdoc.vim'
-Plug 'stephpy/vim-yaml'
-Plug 'elmcast/elm-vim'
-Plug 'elixir-editors/vim-elixir'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
