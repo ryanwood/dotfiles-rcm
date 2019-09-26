@@ -59,6 +59,7 @@ Plug 'jrudess/vim-foldtext'         " Better fold text
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-jdaddy'
 " Plug 'w0rp/ale'
+Plug 'pbrisbin/vim-mkdir'
 
 " Search
 Plug '/usr/local/opt/fzf'
