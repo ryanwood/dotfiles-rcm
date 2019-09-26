@@ -54,8 +54,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'             " Alignment
 Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
+Plug 'jrudess/vim-foldtext'         " Better fold text
 Plug 'ngmy/vim-rubocop'
-Plug 'scottmcginness/vim-foldtext'  " Better fold text
 Plug 'tpope/vim-jdaddy'
 " Plug 'w0rp/ale'
 
@@ -597,20 +597,6 @@ let g:closetag_close_shortcut = '<leader>>'
 
 autocmd FileType slim setlocal commentstring=/\ %s
 autocmd FileType yml setlocal commentstring=#\ %s
-
-" ======================================================== }}}
-" vim-foldtext {{{
-
-" let g:FoldText_placeholder = '<...>'
-let g:FoldText_line = 'L'
-let g:FoldText_level = 'Z'
-let g:FoldText_whole = 'O'
-" let g:FoldText_division = '/'
-" let g:FoldText_multiplication = '*'
-" let g:FoldText_epsilon = '0'
-" let g:FoldText_denominator = 25
-
-set foldtext=CustomFoldText()
 
 " ======================================================== }}}
 " vim-notes {{{
