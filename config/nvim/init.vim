@@ -79,7 +79,6 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-
 Plug 'vim-scripts/matchit.zip'
 " Plug 'alvan/vim-closetag'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -87,8 +86,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'xolox/vim-misc'   " Required for vim-notes
-Plug 'xolox/vim-notes'
 
 call plug#end()
 
