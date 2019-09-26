@@ -7,9 +7,8 @@ scriptencoding utf-8
 call plug#begin()
 
 " Appearance
-" Plug 'mhartington/oceanic-next'
-" Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 
 " Project
 Plug 'christoomey/vim-tmux-navigator'
@@ -202,19 +201,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+colorscheme onedark
 set guifont=Hack:h14
-
-" set background=dark
-colorscheme gruvbox
-
-" colorscheme OceanicNext
-
-" let g:solarized_termcolors=16
-" set t_Co=16
-" set background=dark
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" colorscheme solarized
 
 " ======================================================== }}}
 " Turn Off Swap Files {{{
