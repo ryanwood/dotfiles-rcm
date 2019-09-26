@@ -85,7 +85,7 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'xolox/vim-misc'   " Required for vim-notes
 Plug 'xolox/vim-notes'
@@ -556,9 +556,7 @@ set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
 " ======================================================== }}}
-" gundo.vim {{{
 
-nnoremap <leader>u :GundoToggle<CR>
 
 " ======================================================== }}}
 " nerdtree.vim {{{
@@ -598,6 +596,11 @@ let g:splitjoin_ruby_hanging_args = 0
 
 let g:tslime_always_current_session = 1
 nmap <C-c>r <Plug>SetTmuxVars
+
+" ======================================================== }}}
+" undotree.vim {{{
+
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " ======================================================== }}}
 " vim-better-whitespace.vim {{{
