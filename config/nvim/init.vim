@@ -23,6 +23,14 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-liquid'
 
+" Testing
+Plug 'janko-m/vim-test'              " run test from vim
+Plug 'tpope/vim-dispatch'
+Plug 'neomake/neomake'               " runs make asynchronously in background
+Plug 'ngmy/vim-rubocop'
+Plug 'olalonde/jest-quickfix-reporter'
+Plug 'milkypostman/vim-togglelist'
+
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
 Plug 'tomtom/tlib_vim'               " Dependency for snipmate
@@ -34,13 +42,10 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
 " Plug 'mattn/emmet-vim'
-Plug 'janko-m/vim-test'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'             " Alignment
 Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'jrudess/vim-foldtext'         " Better fold text
-Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-jdaddy'
 " Plug 'w0rp/ale'
 Plug 'pbrisbin/vim-mkdir'
@@ -593,18 +598,23 @@ let g:ruby_indent_block_style = 'do'
 " ======================================================== }}}
 " vim-test {{{
 
-let g:dispatch_quickfix_height=25
+" let g:dispatch_quickfix_height=25
 
 " let test#strategy = "basic"
-let test#strategy = "dispatch"
+" let test#strategy = "dispatch"
 " let test#strategy = "vimterminal"
 " let test#strategy = "vimux"
+let g:test#strategy = 'neomake'
+
+let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
 
 nmap <Leader>t :w<CR>:TestFile<CR>
 nmap <Leader>s :w<CR>:TestNearest<CR>
 nmap <Leader>l :w<CR>:TestLast<CR>
-nmap <Leader>a :w<CR>:TestSuite<CR>
-nmap <Leader>d :w<CR>:TestVisit<CR>
+" nmap <Leader>a :w<CR>:TestSuite<CR>
+" nmap <Leader>d :w<CR>:TestVisit<CR> " Using d for delete mapping
+
+let g:neomake_open_list = 2
 
 " ======================================================== }}}
 " ======================================================== }}}
