@@ -117,6 +117,14 @@ set mouse=a                     " Set mouse to scroll vim window - not terminal 
 set re=1                        " Faster Ruby (use the older regex engine) - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set lazyredraw                  " Attempt to speed things up
 
+" To enable mode shapes, "Cursor" highlight, and blinking:
+" https://neovim.io/doc/user/options.html#'guicursor'
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+highlight Cursor gui=reverse guifg=NONE guibg=NONE
+highlight Cursor gui=NONE guifg=bg guibg=fg
+
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
