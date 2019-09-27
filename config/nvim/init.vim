@@ -1,7 +1,3 @@
-set nocompatible
-set encoding=utf-8
-scriptencoding utf-8
-
 " VimPlug Initialization {{{
 
 call plug#begin()
@@ -108,17 +104,8 @@ call plug#end()
 " ======================================================== }}}
 " General Config {{{
 
-set number                      " Line numbers are good
-set relativenumber              " Relative numbers Help with movements
-set numberwidth=2               " Use relative number except for the current line
-set backspace=indent,eol,start  " Allow backspace in insert mode
-set history=1000                " Store lots of :cmdline history
 set showcmd                     " Show incomplete cmds down the bottom
 set showmode                    " Show current mode down the bottom
-set gcr=a:blinkon0              " Disable cursor blink
-set visualbell                  " No sounds
-set autoread                    " Reload files changed outside vim
-" set colorcolumn=80              " ,100
 set clipboard=unnamed
 set updatetime=250              " Needed for vim-gitgutter to refresh page afte 250ms vs 4s (default)
 set mouse=a                     " Set mouse to scroll vim window - not terminal history"
@@ -148,16 +135,6 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-" Mouse won't work past 223rd column without this...
-" https://github.com/vim/vim/issues/2309
-if !has('nvim')
-	if has("mouse_sgr")
-		set ttymouse=sgr
-	else
-		set ttymouse=xterm2
-	endif
-endif
-
 " Set unusual filetypes
 autocmd BufNewFile,BufRead *.jb set filetype=ruby
 
@@ -179,7 +156,6 @@ autocmd BufNewFile,BufRead *.jb set filetype=ruby
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
-
 " ======================================================== }}}
 " Theme {{{
 
@@ -200,31 +176,16 @@ set nowb
 " ======================================================== }}}
 " Persistent Undo {{{
 
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
+set undofile
 
 " ======================================================== }}}
 " Indentation {{{
 
-set autoindent
 set smartindent
-set smarttab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-
-filetype plugin on
-filetype indent on
-
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
@@ -270,13 +231,10 @@ set wildignore+=bower_components/**
 
 set scrolloff=3         "Start scrolling when we're X lines away from margins
 set sidescrolloff=15
-set sidescroll=1
 
 " ======================================================== }}}
 " Search {{{
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
 set showmatch
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
