@@ -313,7 +313,7 @@ inoremap jk <esc>
 
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>v :tabe $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>sv :w<CR> :source $MYVIMRC<CR>
 
 " Sometimes there is a delay when saving this file. I think this may be why.
 " if has("autocmd")
