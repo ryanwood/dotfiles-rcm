@@ -41,7 +41,7 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
 Plug 'tommcdo/vim-lion'             " Alignment
 Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
@@ -484,6 +484,19 @@ nmap <leader>k :BuffergatorMruCycleNext<cr>
 
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
+
+" ======================================================== }}}
+" emmet-vim {{{
+
+" make emmet behave well with JSX in JS and TS files
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'typescript' : {
+\      'extends' : 'tsx',
+\  },
+\}
 
 " ======================================================== }}}
 " fugitive.vim {{{
