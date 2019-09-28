@@ -453,6 +453,44 @@ nnoremap <leader>fz :tabnew %<cr>
 " Reopen (find) the last closed pane and reopen in vertical split
 nmap <leader>fl :vs<bar>:b#<CR>
 
+map <Leader>D "_dd<CR>
+map <Leader>d "_d<CR>
+
+" search&replace current word
+map <Leader>rr :%S@<C-r><C-w>@
+
+" Handle accidental capitals
+command! Q q " Bind :Q to :q
+command! Qall qall
+command! W w
+
+" Relative line numbers
+set number                      " Line numbers are good
+set numberwidth=2               " Use relative number except for the current line
+set relativenumber
+
+autocmd InsertLeave * :call NumberToggle()
+autocmd InsertEnter * :call NumberToggle()
+
+map <Leader>' :call NumberToggle()<CR>
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+" Show a vertical line/guard at column 80
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=236  guibg=#2C323C
+let &colorcolumn="80,".join(range(100,999),",")
+
+" Don't yank the results of the replaced text
+vnoremap p "_dP
+
 " ======================================================== }}}
 " Plugin Settings {{{
 
