@@ -126,8 +126,8 @@ set noswapfile                    " Turn Off Swap Files
 set nobackup
 set nowb
 set nowrap                        " Don't wrap lines
-set number                      " Line numbers are good
-set numberwidth=2               " Use relative number except for the current line
+set number                        " Line numbers are good
+set numberwidth=2                 " Use relative number except for the current line
 set re=1                          " Faster Ruby (use the older regex engine) - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set relativenumber
 set scrolloff=3                   " Start scrolling when we're X lines away from margins
@@ -200,7 +200,6 @@ map <Leader>' :call NumberToggle()<CR>
 
 nmap <leader>; :%s/
 
-
 " Navigating tabs
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
@@ -226,8 +225,8 @@ nmap <leader>cm yar%o<esc>p
 " Clone a paragraph
 nnoremap <leader>cp yap<S-}>p
 
-map <Leader>d "_d<CR>
-map <Leader>D "_dd<CR>
+" map <Leader>d "_d<CR>
+" map <Leader>D "_dd<CR>
 
 " Some helpers to edit mode http://vimcasts.org/e/14
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -238,7 +237,6 @@ nmap <leader>et :tabe %%
 
 " format (align) the entire file
 nnoremap <leader>fef :normal! gg=G``<CR>
-nnoremap <leader>ff :Rg<space>
 " Reopen (find) the last closed pane and reopen in vertical split
 nmap <leader>fl :vs<bar>:b#<CR>
 " Full Zoom the current pane in a new tab. :wq to go back to the pane.
@@ -265,15 +263,19 @@ nmap <leader>j :BuffergatorMruCyclePrev<cr>
 " buffergator: Go to the next buffer open
 nmap <leader>k :BuffergatorMruCycleNext<cr>
 
-map <leader>n :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nm :NERDTreeMirror<cr>
+map <leader>nt :NERDTreeToggle<cr>
+
+nnoremap <leader>o :Obsess
 
 command! PromoteToLet :call PromoteToLet()
 nmap <leader>p :PromoteToLet<cr>
 
-nmap <Leader>r :RuboCop<CR>
-" search&replace current word
+nmap <Leader>rc :RuboCop<CR>
+" Find in project
+nnoremap <leader>rg :Rg<space>
+" search & replace current word
 map <Leader>rr :%S@<C-r><C-w>@
 
 " https://github.com/JoshCheek/seeing_is_believing/wiki/Editor-Integration
@@ -294,29 +296,24 @@ vmap <leader>sm :norm A # => <Esc>
 " Annotate marked lines
 nmap <leader>sam :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
 
-" edit vimrc/zshrc and load vimrc bindings
-nnoremap <leader>sv :w<CR> :source $MYVIMRC<CR>
-
-" TODO: ========================================
-nmap <Leader>t :w<CR>:TestFile<CR>
-nmap <Leader>s :w<CR>:TestNearest<CR>
-nmap <Leader>l :w<CR>:TestLast<CR>
-" nmap <Leader>a :w<CR>:TestSuite<CR>
-" nmap <Leader>d :w<CR>:TestVisit<CR> " Using d for delete mapping
-" TODO: ========================================
-
-nmap <leader>T :enew<cr>
+nmap <Leader>tf :w<CR>:TestFile<CR>
+nmap <Leader>ts :w<CR>:TestNearest<CR>
+nmap <Leader>tl :w<CR>:TestLast<CR>
+nmap <Leader>ta :w<CR>:TestSuite<CR>
+nmap <Leader>tv :w<CR>:TestVisit<CR>
 " set text wrapping toggles
 nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nnoremap <leader>w :w<cr>
-nnoremap <leader>v :tabe $MYVIMRC<CR>
+
+nnoremap <leader>ve :tabe $MYVIMRC<CR>
+" Manually source it, there is an autocmd below to do this automatically.
+nnoremap <leader>vs :source $MYVIMRC<CR>
 
 " Toggle current fold
-nnoremap <leader>x za
-vnoremap <leader>x za
+nnoremap <leader><leader> za
 
 " Refocus folds
 nnoremap <leader>z zMzvzz
@@ -407,6 +404,16 @@ noremap <c-x> <c-w>x
 " ======================================================== }}}
 " AutoCommands {{{
 
+" Set unusual filetypes
+autocmd BufNewFile,BufRead *.jb set filetype=ruby
+
+" Source vimrc/init when saved
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+" vim-commentary - fix comments
+autocmd FileType slim setlocal commentstring=/\ %s
+autocmd FileType yml setlocal commentstring=#\ %s
+
 " Trigger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
@@ -416,21 +423,14 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-" Set unusual filetypes
-autocmd BufNewFile,BufRead *.jb set filetype=ruby
-
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+autocmd InsertLeave * :call NumberToggle()
+autocmd InsertEnter * :call NumberToggle()
 
 " Automatically resize splits when resizing MacVim window
 autocmd VimResized * wincmd =
 
-autocmd InsertLeave * :call NumberToggle()
-autocmd InsertEnter * :call NumberToggle()
-
-" vim-commentary - fix comments
-autocmd FileType slim setlocal commentstring=/\ %s
-autocmd FileType yml setlocal commentstring=#\ %s
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
 
 " ======================================================== }}}
 " Custom Functions {{{
