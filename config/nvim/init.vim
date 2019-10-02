@@ -77,6 +77,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" Writing
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
 call plug#end()
 
 " Plug 'briandoll/change-inside-surroundings.vim'
@@ -254,6 +258,8 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gt :Gcommit -v -q %:p<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>
 
+nnoremap <leader>go :Goyo<CR>
+
 " Toggle hlsearch with <leader>hs
 " nmap <leader>hs :set hlsearch! hlsearch?<CR>
 
@@ -423,14 +429,20 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-autocmd InsertLeave * :call NumberToggle()
-autocmd InsertEnter * :call NumberToggle()
+augroup NumberToggleOnInsert
+  autocmd!
+  autocmd InsertLeave * :call NumberToggle()
+  autocmd InsertEnter * :call NumberToggle()
+augroup END
 
 " Automatically resize splits when resizing MacVim window
 autocmd VimResized * wincmd =
 
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " ======================================================== }}}
 " Custom Functions {{{
@@ -456,6 +468,40 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
+
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set wrap
+  set guifont=Menlo:h18
+  Limelight
+  augroup NumberToggleOnInsert
+    autocmd!
+  augroup END
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  set nowrap
+  set guifont=Hack:h14
+  Limelight!
+  augroup NumberToggleOnInsert
+    autocmd!
+    autocmd InsertLeave * :call NumberToggle()
+    autocmd InsertEnter * :call NumberToggle()
+  augroup END
+endfunction
 
 " ======================================================== }}}
 " Plugin Settings {{{
@@ -521,6 +567,12 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
+
+" ======================================================== }}}
+" limelight.vim {{{
+
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
 
 " ======================================================== }}}
 " neomake {{{
