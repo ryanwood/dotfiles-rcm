@@ -273,7 +273,7 @@ map <leader>nf :NERDTreeFind<cr>
 map <leader>nm :NERDTreeMirror<cr>
 map <leader>nt :NERDTreeToggle<cr>
 
-nnoremap <leader>o :Obsess
+nnoremap <leader>o :Obsess<CR>
 
 command! PromoteToLet :call PromoteToLet()
 nmap <leader>p :PromoteToLet<cr>
@@ -313,6 +313,7 @@ nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nnoremap <leader>w :w<cr>
+nnoremap <leader>qa :wqa<cr>
 
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 " Manually source it, there is an autocmd below to do this automatically.
@@ -361,8 +362,11 @@ vnoremap // y/<C-R>"<CR>
 " jk is escape. I also map Caps Lock to escapse on OSX
 " inoremap jk <esc>
 
-" Don't yank the results of the replaced text
-vnoremap p "_dP
+" Don't yank the results of the replaced text - https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines
+vnoremap p "0p
+vnoremap P "0P
+vnoremap y "0y
+vnoremap d "0d
 
 " Apply macros with ease
 nnoremap Q @q
