@@ -318,7 +318,6 @@ nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nnoremap <leader>w :w<cr>
-nnoremap <leader>qa :wqa<cr>
 
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 " Manually source it, there is an autocmd below to do this automatically.
@@ -363,15 +362,6 @@ vnoremap // y/<C-R>"<CR>
 " Commented because this adds to the search phrase and breaks :AckFromSearch
 " nnoremap / /\v
 " vnoremap / /\v
-
-" jk is escape. I also map Caps Lock to escapse on OSX
-" inoremap jk <esc>
-
-" Don't yank the results of the replaced text - https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines
-vnoremap p "0p
-vnoremap P "0P
-vnoremap y "0y
-vnoremap d "0d
 
 " Apply macros with ease
 nnoremap Q @q
