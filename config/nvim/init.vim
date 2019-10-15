@@ -302,11 +302,16 @@ vmap <leader>sm :norm A # => <Esc>
 " Annotate marked lines
 nmap <leader>sam :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
 
-nmap <Leader>tf :w<CR>:TestFile<CR>
+nmap <Leader>tt :w<CR>:TestFile<CR>
 nmap <Leader>ts :w<CR>:TestNearest<CR>
 nmap <Leader>tl :w<CR>:TestLast<CR>
-nmap <Leader>ta :w<CR>:TestSuite<CR>
+" nmap <Leader>ta :w<CR>:TestSuite<CR>
 nmap <Leader>tv :w<CR>:TestVisit<CR>
+
+nmap <Leader>tbt :w<CR>:TestFile -strategy=basic<CR>
+nmap <Leader>tbs :w<CR>:TestNearest -strategy=basic<CR>
+nmap <Leader>tbl :w<CR>:TestLast -strategy=basic<CR>
+
 " set text wrapping toggles
 nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 
