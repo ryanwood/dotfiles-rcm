@@ -43,12 +43,12 @@ Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
-Plug 'tommcdo/vim-lion'             " Alignment
 Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'jrudess/vim-foldtext'         " Better fold text
 Plug 'tpope/vim-jdaddy'
 Plug 'w0rp/ale'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'junegunn/vim-easy-align'
 
 " Search
 Plug '/usr/local/opt/fzf'
@@ -610,6 +610,15 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
+
+" ======================================================== }}}
+" vim-easy-align {{{
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " ======================================================== }}}
 " vim-rubocop {{{
