@@ -554,6 +554,8 @@ let g:buffergator_suppress_keymaps = 1
 " ======================================================== }}}
 " emmet-vim {{{
 
+let g:user_emmet_leader_key=','
+
 " make emmet behave well with JSX in JS and TS files
 let g:user_emmet_settings = {
 \  'javascript' : {
@@ -563,6 +565,9 @@ let g:user_emmet_settings = {
 \      'extends' : 'tsx',
 \  },
 \}
+
+let g:user_emmet_install_global = 0
+autocmd FileType jsx,slim,scss,html,css EmmetInstall
 
 " ======================================================== }}}
 " greplace.vim {{{
