@@ -120,6 +120,7 @@ alias gstl='git stash list'
 alias gsts='git stash save'
 alias gstst='git stash show --text'
 alias gstp='git stash pop'
+alias gstu='git stash -u'
 alias gsu='git submodule update'
 
 alias gunignore='git update-index --no-assume-unchanged'
