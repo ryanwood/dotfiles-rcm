@@ -12,6 +12,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-obsession'
 Plug 'itchyny/lightline.vim'
+Plug 'roman/golden-ratio'
 
 " Git
 Plug 'tpope/vim-git'
@@ -58,8 +59,10 @@ Plug 'skwp/greplace.vim'
 " Text Objects
 Plug 'kana/vim-textobj-user'        " Required for nelstrom/vim-textobj-rubyblock
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'nelstrom/vim-textobj-rubyblock'
+" Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'rhysd/vim-textobj-ruby'
 Plug 'glts/vim-textobj-comment'
+Plug 'terryma/vim-expand-region'
 
 " " Improvements
 Plug 'tpope/vim-abolish'
@@ -136,7 +139,7 @@ set re=1                          " Faster Ruby (use the older regex engine) - f
 set relativenumber
 set scrolloff=3                   " Start scrolling when we're X lines away from margins
 set shiftwidth=2
-set sidescrolloff=15
+set sidescrolloff=100             " Don't shift the beginning of line off screen left when moving into panes if cursor is at EOL
 set showcmd                       " Show incomplete cmds down the bottom
 set smartindent
 set softtabstop=2
@@ -264,10 +267,10 @@ nnoremap <leader>go :Goyo<CR>
 " nmap <leader>hs :set hlsearch! hlsearch?<CR>
 
 " buffergator: Go to the previous buffer open
-nmap <leader>j :BuffergatorMruCyclePrev<cr>
+" nmap <leader>j :BuffergatorMruCyclePrev<cr>
 
 " buffergator: Go to the next buffer open
-nmap <leader>k :BuffergatorMruCycleNext<cr>
+" nmap <leader>k :BuffergatorMruCycleNext<cr>
 
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nm :NERDTreeMirror<cr>
@@ -308,9 +311,9 @@ nmap <Leader>tl :w<CR>:TestLast<CR>
 " nmap <Leader>ta :w<CR>:TestSuite<CR>
 nmap <Leader>tv :w<CR>:TestVisit<CR>
 
-nmap <Leader>tbt :w<CR>:TestFile -strategy=basic<CR>
-nmap <Leader>tbs :w<CR>:TestNearest -strategy=basic<CR>
-nmap <Leader>tbl :w<CR>:TestLast -strategy=basic<CR>
+nmap <Leader>trt :w<CR>:TestFile -strategy=basic<CR>
+nmap <Leader>trs :w<CR>:TestNearest -strategy=basic<CR>
+nmap <Leader>trl :w<CR>:TestLast -strategy=basic<CR>
 
 " set text wrapping toggles
 nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
@@ -443,6 +446,7 @@ autocmd WinLeave * setlocal nocursorline
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+autocmd FileType elm setlocal shiftwidth=4 tabstop=4
 " ======================================================== }}}
 " Custom Functions {{{
 
@@ -508,7 +512,7 @@ endfunction
 " ale {{{
 
 " fix files on save
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 " lint after 1000ms after changes are made both on insert mode and normal mode
 let g:ale_lint_on_text_changed = 'always'
@@ -521,7 +525,14 @@ let g:ale_sign_warning = '⚠\ '
 " fixer configurations
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'ruby': ['rubocop'],
 \}
+
+" ======================================================== }}}
+" auto-pairs {{{
+
+" don't jump to a new line to close a pair
+let g:AutoPairsMultilineClose=0
 
 " ======================================================== }}}
 " buffergator.vim {{{
@@ -544,20 +555,25 @@ let g:buffergator_suppress_keymaps = 1
 " ======================================================== }}}
 " emmet-vim {{{
 
-let g:user_emmet_leader_key=','
+" let g:user_emmet_leader_key=','
 
 " make emmet behave well with JSX in JS and TS files
-let g:user_emmet_settings = {
-\  'javascript' : {
-\      'extends' : 'jsx',
-\  },
-\  'typescript' : {
-\      'extends' : 'tsx',
-\  },
-\}
+" let g:user_emmet_settings = {
+" \  'javascript' : {
+" \      'extends' : 'jsx',
+" \  },
+" \  'typescript' : {
+" \      'extends' : 'tsx',
+" \  },
+" \}
 
-let g:user_emmet_install_global = 0
-autocmd FileType jsx,slim,scss,html,css EmmetInstall
+" let g:user_emmet_install_global = 0
+" autocmd FileType jsx,slim,scss,html,css EmmetInstall
+
+" ======================================================== }}}
+" golden-ratio {{{
+
+let g:golden_ratio_exclude_nonmodifiable = 1
 
 " ======================================================== }}}
 " greplace.vim {{{
@@ -619,6 +635,15 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" ======================================================== }}}
+" vim-expand-region {{{
+
+" Use the global default + the following for ruby
+call expand_region#custom_text_objects('ruby', {
+      \ 'ir' :0,
+      \ 'ar' :1,
+      \ })
 
 " ======================================================== }}}
 " vim-rubocop {{{
