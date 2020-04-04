@@ -139,6 +139,7 @@ set re=1                          " Faster Ruby (use the older regex engine) - f
 set relativenumber
 set scrolloff=3                   " Start scrolling when we're X lines away from margins
 set shiftwidth=2
+set sidescroll=1                  " https://ddrscott.github.io/blog/2016/sidescroll/
 set sidescrolloff=100             " Don't shift the beginning of line off screen left when moving into panes if cursor is at EOL
 set showcmd                       " Show incomplete cmds down the bottom
 set smartindent
@@ -227,8 +228,12 @@ nmap <leader>bl :BuffergatorOpen<cr>
 " Close all buffers but the current one
 nmap <leader>bo :%bd<cr>:e#<cr>
 
+" Copy the current file's path
+nmap <leader>cf :let @+=expand("%")<cr>
+
 "Clone a Ruby/RSpec Method
 nmap <leader>cm yar%o<esc>p
+
 " Clone a paragraph
 nnoremap <leader>cp yap<S-}>p
 
@@ -573,6 +578,7 @@ let g:buffergator_suppress_keymaps = 1
 " ======================================================== }}}
 " golden-ratio {{{
 
+let g:golden_ratio_autocommand = 0
 let g:golden_ratio_exclude_nonmodifiable = 1
 
 " ======================================================== }}}
