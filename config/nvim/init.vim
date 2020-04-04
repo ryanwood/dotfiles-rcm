@@ -144,9 +144,9 @@ set showcmd                       " Show incomplete cmds down the bottom
 set smartindent
 set softtabstop=2
 set showmatch
-set showmode                      " Show current mode down the bottom
 " set splitbelow
 " set splitright
+set noshowmode                    " Lightline shows the mode - don't need to duplicated it
 set smartcase                     " ...unless we type a capital
 set tabstop=2
 set timeoutlen=1000 ttimeoutlen=0 " Fix <shift-O> after <esc> delay https://www.johnhawthorn.com/2012/09/vi-escape-delays/
@@ -584,9 +584,45 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 " ======================================================== }}}
 " lightline.vim {{{
 
+" Defaults
+  " \   'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+  " \   'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
+
 let g:lightline = {
   \ 'colorscheme': 'onedark',
-  \ }
+  \ 'active': {
+  \   'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'filenamewithparent', 'modified']],
+  \   'right': [['lineinfo'], ['percent'], ['filetype']]
+  \ },
+  \ 'inactive': {
+  \   'left': [['filenamewithparent']],
+  \   'right': [['lineinfo'], ['percent']]
+  \ },
+  \ 'component': {
+  \   'filenamewithparent' : "%{expand('%:p:h:t')}/%t"
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead',
+  \   'filetype': 'LightlineFiletype',
+  \ },
+  \ 'mode_map': {
+  \   'n' : 'N',
+  \   'i' : 'I',
+  \   'R' : 'R',
+  \   'v' : 'V',
+  \   'V' : 'VL',
+  \   "\<C-v>": 'VB',
+  \   'c' : 'C',
+  \   's' : 'S',
+  \   'S' : 'SL',
+  \   "\<C-s>": 'SB',
+  \   't': 'T',
+  \ },
+\ }
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
 
 " ======================================================== }}}
 " limelight.vim {{{
