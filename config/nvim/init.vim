@@ -176,7 +176,7 @@ if (has("termguicolors"))
 endif
 
 colorscheme onedark
-set guifont=Hack:h14
+" set guifont=Hack:h14
 
 " To enable mode shapes, "Cursor" highlight, and blinking:
 " https://neovim.io/doc/user/options.html#'guicursor'
