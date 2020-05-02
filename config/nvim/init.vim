@@ -18,6 +18,7 @@ Plug 'roman/golden-ratio'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
 Plug 'sheerun/vim-polyglot'
