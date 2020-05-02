@@ -605,7 +605,7 @@ let g:lightline = {
   \   'right': [['lineinfo'], ['percent'], ['filetype']]
   \ },
   \ 'inactive': {
-  \   'left': [['filenamewithparent']],
+  \   'left': [['filenamewithparent', 'modified']],
   \   'right': [['lineinfo'], ['percent']]
   \ },
   \ 'component': {
