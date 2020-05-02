@@ -23,6 +23,8 @@ alias devlog='tail -f log/development.log'
 alias ds='NO_CONFIRM=1 ./deploy staging'
 alias dp='./deploy production'
 
+alias fix='git diff --name-only | uniq | xargs $EDITOR'
+
 alias ga='git add'
 alias gaa='git add --all'
 alias gau='git add --update'
