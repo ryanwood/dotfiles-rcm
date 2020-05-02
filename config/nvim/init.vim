@@ -145,9 +145,9 @@ set showcmd                       " Show incomplete cmds down the bottom
 set smartindent
 set softtabstop=2
 set showmatch
-" set splitbelow
-" set splitright
 set noshowmode                    " Lightline shows the mode - don't need to duplicated it
+set splitbelow
+set splitright
 set smartcase                     " ...unless we type a capital
 set tabstop=2
 set timeoutlen=1000 ttimeoutlen=0 " Fix <shift-O> after <esc> delay https://www.johnhawthorn.com/2012/09/vi-escape-delays/
