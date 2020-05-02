@@ -364,6 +364,9 @@ nnoremap <leader>z zMzvzz
 " Start a search based on the visually-selected text
 vnoremap // y/<C-R>"<CR>
 
+" Start an Rg search based on the visually-selected text
+nnoremap & *yiw:Rg <C-R>"<CR>
+
 " Swap two words
 " nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
 
