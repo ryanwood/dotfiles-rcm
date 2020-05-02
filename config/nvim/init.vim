@@ -341,9 +341,6 @@ nnoremap <leader>ve :tabe $MYVIMRC<CR>
 " Manually source it, there is an autocmd below to do this automatically.
 nnoremap <leader>vs :source $MYVIMRC<CR>
 
-" Toggle current fold
-nnoremap <leader><leader> za
-
 " Refocus folds
 nnoremap <leader>z zMzvzz
 
