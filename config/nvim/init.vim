@@ -74,7 +74,18 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/matchit.zip'
 " Plug 'alvan/vim-closetag'
+
+Plug 'AndrewRadev/deleft.vim'
+Plug 'AndrewRadev/dsf.vim'
+Plug 'AndrewRadev/multichange.vim'
+Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/switch.vim'
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'sickill/vim-pasta'
+Plug 'AndrewRadev/whitespaste.vim' " works with vim-pasta
+Plug 'AndrewRadev/undoquit.vim'
+
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
@@ -249,8 +260,6 @@ nmap <leader>et :tabe %%
 
 " format (align) the entire file
 nnoremap <leader>fef :normal! gg=G``<CR>
-" Reopen (find) the last closed pane and reopen in vertical split
-nmap <leader>fl :vs<bar>:b#<CR>
 " Full Zoom the current pane in a new tab. :wq to go back to the pane.
 nnoremap <leader>fz :tabnew %<cr>
 
@@ -362,9 +371,6 @@ vnoremap // y/<C-R>"<CR>
 
 " Underline the current line with '='
 " nmap <silent> <leader>ul :t.<CR>Vr=  " Causes delay on ',w'
-
-" find merge conflict markers
-" nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " Make regex behave like Ruby or PRCE, not vim's weirdness
 " Commented because this adds to the search phrase and breaks :AckFromSearch
@@ -698,6 +704,20 @@ let g:vimrubocop_keymap = 0
 let g:ruby_indent_access_modifier_style = 'outdent'
 let g:ruby_indent_assignment_style = 'variable'
 let g:ruby_indent_block_style = 'do'
+
+" ======================================================== }}}
+" sideways.vim {{{
+
+" Move arguments sideways
+nnoremap gz :SidewaysLeft<cr>
+nnoremap gx :SidewaysRight<cr>
+
+" This will map the "a" text object to operate on an "argument". So, you can
+" perform daa to delete an argument, cia to change an argument, and so on.
+omap aa <Plug>SidewaysArgumentTextobjA
+xmap aa <Plug>SidewaysArgumentTextobjA
+omap ia <Plug>SidewaysArgumentTextobjI
+xmap ia <Plug>SidewaysArgumentTextobjI
 
 " ======================================================== }}}
 " vim-test {{{
