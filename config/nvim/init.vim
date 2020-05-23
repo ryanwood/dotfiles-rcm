@@ -47,7 +47,7 @@ Plug 'tpope/vim-eunuch'             " Rename and other Unix helpers
 Plug 'jc00ke/vim-tomdoc'            " Tomdoc snippets
 Plug 'jrudess/vim-foldtext'         " Better fold text
 Plug 'tpope/vim-jdaddy'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/vim-easy-align'
 
@@ -86,7 +86,6 @@ Plug 'sickill/vim-pasta'
 Plug 'AndrewRadev/whitespaste.vim' " works with vim-pasta
 Plug 'AndrewRadev/undoquit.vim'
 
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -287,11 +286,9 @@ nnoremap <leader>go :Goyo<CR>
 " nmap <leader>k :BuffergatorMruCycleNext<cr>
 
 nnoremap <leader>o :Obsess<CR>
+" p for pretty
+nmap <Leader>p :ALEFix<CR>
 
-command! PromoteToLet :call PromoteToLet()
-nmap <leader>p :PromoteToLet<cr>
-
-nmap <Leader>rc :RuboCop<CR>
 " Find in project
 nnoremap <leader>rg :Rg<space>
 " search & replace current word
@@ -320,6 +317,9 @@ nmap <Leader>ts :w<CR>:TestNearest<CR>
 nmap <Leader>tl :w<CR>:TestLast<CR>
 " nmap <Leader>ta :w<CR>:TestSuite<CR>
 nmap <Leader>tv :w<CR>:TestVisit<CR>
+
+command! PromoteToLet :call PromoteToLet()
+nmap <leader>tp :PromoteToLet<cr>
 
 nmap <Leader>trt :w<CR>:TestFile -strategy=basic<CR>
 nmap <Leader>trs :w<CR>:TestNearest -strategy=basic<CR>
@@ -519,7 +519,7 @@ endfunction
 " ale {{{
 
 " fix files on save
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 " lint after 1000ms after changes are made both on insert mode and normal mode
 let g:ale_lint_on_text_changed = 'always'
@@ -532,7 +532,17 @@ let g:ale_sign_warning = '⚠\ '
 " fixer configurations
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'css': ['prettier'],
+\   'html': ['prettier'],
+\   'javascript': ['prettier'],
+\   'javascriptreact': ['prettier'],
+\   'json': ['prettier'],
+\   'markdown': ['prettier'],
 \   'ruby': ['rubocop'],
+\   'slim': ['slim-lint'],
+\   'typescript': ['prettier'],
+\   'typescriptreact': ['prettier'],
+\   'yaml': ['prettier'],
 \}
 
 " ======================================================== }}}
@@ -654,13 +664,6 @@ let g:splitjoin_ruby_hanging_args = 0
 
 let g:tslime_always_current_session = 1
 nmap <C-c>r <Plug>SetTmuxVars
-
-" ======================================================== }}}
-" vim-better-whitespace.vim {{{
-
-let g:better_whitespace_enabled = 1
-let g:strip_whitespace_on_save = 1
-let g:strip_whitespace_confirm = 0
 
 " ======================================================== }}}
 " vim-closetag {{{
