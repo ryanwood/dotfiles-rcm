@@ -193,6 +193,8 @@ alias vi="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 
+alias ys="yarn spec"
+alias ysw="yarn spec --watch"
 
 # Git
 
