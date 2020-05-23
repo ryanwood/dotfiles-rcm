@@ -719,6 +719,29 @@ omap ia <Plug>SidewaysArgumentTextobjI
 xmap ia <Plug>SidewaysArgumentTextobjI
 
 " ======================================================== }}}
+" switch.vim {{{
+
+" let g:switch_custom_definitions =
+"     \ [
+"     \   ['foo', 'bar', 'baz']
+"     \ ]
+
+let b:switch_custom_definitions = [
+      \   {
+      \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
+      \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
+      \     '^\( *\)describe': '\1fdescribe',
+      \     '^\( *\)fdescribe': '\1describe',
+      \     '^\( *\)it': '\1fit',
+      \     '^\( *\)fit': '\1it',
+      \     'it.todo(\(.\+\))': 'it(\1, () => {\r})',
+      \     'expect(\(.\+\)).to': 'expect(\1).not.to',
+      \     'expect(\(.\+\)).not.to': 'expect(\1).to'
+      \   }
+      \ ]
+
+
+" ======================================================== }}}
 " vim-test {{{
 
 " let g:dispatch_quickfix_height=25
