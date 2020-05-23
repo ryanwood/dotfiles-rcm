@@ -9,15 +9,14 @@ Plug 'joshdick/onedark.vim'
 " Project
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-obsession'
+Plug 'justinmk/vim-dirvish'
 Plug 'itchyny/lightline.vim'
 Plug 'roman/golden-ratio'
 
 " Git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
@@ -286,10 +285,6 @@ nnoremap <leader>go :Goyo<CR>
 
 " buffergator: Go to the next buffer open
 " nmap <leader>k :BuffergatorMruCycleNext<cr>
-
-map <leader>nf :NERDTreeFind<cr>
-map <leader>nm :NERDTreeMirror<cr>
-map <leader>nt :NERDTreeToggle<cr>
 
 nnoremap <leader>o :Obsess<CR>
 
