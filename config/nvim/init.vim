@@ -31,13 +31,10 @@ Plug 'neomake/neomake'               " runs make asynchronously in background
 Plug 'olalonde/jest-quickfix-reporter'
 
 " Snippets
-Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
-Plug 'tomtom/tlib_vim'               " Dependency for snipmate
-Plug 'garbas/vim-snipmate'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 
 " Tools
-Plug 'ervandew/supertab'
 Plug 'tpope/vim-bundler'
 Plug 'jgdavey/tslime.vim'
 Plug 'mattn/emmet-vim'
@@ -111,6 +108,7 @@ call plug#end()
 " Setting {{{
 
 set clipboard=unnamed
+set cmdheight=2                   " [coc] Give more space for displaying messages.
 set expandtab
 set foldmethod=syntax             " fold based on syntax
 set foldnestmax=10                " deepest fold is 3 levels
@@ -127,6 +125,7 @@ set noswapfile                    " Turn Off Swap Files
 set nobackup
 set nowb
 set nowrap                        " Don't wrap lines
+set nowritebackup                 " [coc]
 set number                        " Line numbers are good
 set numberwidth=2                 " Use relative number except for the current line
 set re=1                          " Faster Ruby (use the older regex engine) - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
@@ -134,9 +133,17 @@ set scrolloff=3                   " Start scrolling when we're X lines away from
 set shiftwidth=2
 set sidescroll=1                  " https://ddrscott.github.io/blog/2016/sidescroll/
 set sidescrolloff=100             " Don't shift the beginning of line off screen left when moving into panes if cursor is at EOL
+" [coc] Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 set showcmd                       " Show incomplete cmds down the bottom
 set smartindent
 set softtabstop=2
+set shortmess+=c                  " [coc] Don't pass messages to |ins-completion-menu|.
 set showmatch
 set noshowmode                    " Lightline shows the mode - don't need to duplicated it
 set splitbelow
@@ -145,6 +152,7 @@ set smartcase                     " ...unless we type a capital
 set tabstop=2
 set timeoutlen=1000 ttimeoutlen=0 " Fix <shift-O> after <esc> delay https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set undofile                      " Set persistent undo file (location set by neovim)
+set updatetime=300                " [coc] Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set wildmode=list:longest
 set wildmenu                      " enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~       " stuff to ignore when tab completing
@@ -239,10 +247,10 @@ nmap <leader>es :sp %%
 nmap <leader>ev :vsp %%
 nmap <leader>et :tabe %%
 
-" format (align) the entire file
-nnoremap <leader>fef :normal! gg=G``<CR>
-" Full Zoom the current pane in a new tab. :wq to go back to the pane.
-nnoremap <leader>fz :tabnew %<cr>
+" " format (align) the entire file
+" nnoremap <leader>fef :normal! gg=G``<CR>
+" " Full Zoom the current pane in a new tab. :wq to go back to the pane.
+" nnoremap <leader>fz :tabnew %<cr>
 
 " fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
@@ -493,17 +501,8 @@ let g:ale_sign_warning = '⚠\ '
 " fixer configurations
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'css': ['prettier'],
-\   'html': ['prettier'],
-\   'javascript': ['prettier'],
-\   'javascriptreact': ['prettier'],
-\   'json': ['prettier'],
-\   'markdown': ['prettier'],
 \   'ruby': ['rubocop'],
 \   'slim': ['slim-lint'],
-\   'typescript': ['prettier'],
-\   'typescriptreact': ['prettier'],
-\   'yaml': ['prettier'],
 \}
 
 " ======================================================== }}}
@@ -529,6 +528,154 @@ let g:buffergator_suppress_keymaps = 1
 
 " Looper buffers
 "let g:buffergator_mru_cycle_loop = 1
+
+" ======================================================== }}}
+" coc.nvim {{{
+
+let g:coc_global_extensions = [
+      \  'coc-css',
+      \  'coc-html',
+      \  'coc-json',
+      \  'coc-prettier',
+      \  'coc-solargraph',
+      \  'coc-snippets',
+      \  'coc-tsserver',
+      \  'coc-yaml',
+      \]
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+" inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+" if exists('*complete_info')
+"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>ly <Plug>(coc-type-definition)
+nmap <silent> <leader>li <Plug>(coc-implementation)
+nmap <silent> <leader>lr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>ln <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>la  <Plug>(coc-codeaction-selected)
+nmap <leader>la  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <leader>la  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <leader>le  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <leader>lc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <leader>lo  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <leader>ls  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <leader>lj  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <leader>lk  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <leader>lp  :<C-u>CocListResume<CR>
+
+" CoC Extensions
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+let g:coc_snippet_next = '<tab>'
 
 " ======================================================== }}}
 " emmet-vim {{{
@@ -570,7 +717,7 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ 'active': {
-  \   'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'filenamewithparent', 'modified']],
+  \   'left': [['mode', 'paste'], ['cocstatus', 'currentfunction', 'gitbranch', 'readonly', 'filenamewithparent', 'modified']],
   \   'right': [['lineinfo'], ['percent'], ['filetype']]
   \ },
   \ 'inactive': {
@@ -581,6 +728,8 @@ let g:lightline = {
   \   'filenamewithparent' : "%{expand('%:p:h:t')}/%t"
   \ },
   \ 'component_function': {
+  \   'cocstatus': 'coc#status',
+  \   'currentfunction': 'CocCurrentFunction',
   \   'gitbranch': 'FugitiveHead',
   \   'filetype': 'LightlineFiletype',
   \ },
@@ -601,6 +750,10 @@ let g:lightline = {
 
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! CocCurrentFunction()
+  return get(b:, 'coc_current_function', '')
 endfunction
 
 " ======================================================== }}}
