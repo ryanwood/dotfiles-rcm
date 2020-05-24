@@ -29,7 +29,6 @@ Plug 'janko-m/vim-test'              " run test from vim
 Plug 'tpope/vim-dispatch'
 Plug 'neomake/neomake'               " runs make asynchronously in background
 Plug 'olalonde/jest-quickfix-reporter'
-Plug 'milkypostman/vim-togglelist'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'  " Dependency for snipmate
