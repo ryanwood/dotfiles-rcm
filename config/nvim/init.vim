@@ -131,7 +131,6 @@ set nowrap                        " Don't wrap lines
 set number                        " Line numbers are good
 set numberwidth=2                 " Use relative number except for the current line
 set re=1                          " Faster Ruby (use the older regex engine) - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
-set relativenumber
 set scrolloff=3                   " Start scrolling when we're X lines away from margins
 set shiftwidth=2
 set sidescroll=1                  " https://ddrscott.github.io/blog/2016/sidescroll/
@@ -199,7 +198,6 @@ nnoremap <leader>[ gT
 " Close all except current tab
 nnoremap <leader>\ :tabonly<Enter>
 " nmap <leader>' cs"'
-map <Leader>' :call NumberToggle()<CR>
 
 nmap <leader>; :%s/
 
@@ -423,11 +421,6 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-augroup NumberToggleOnInsert
-  autocmd!
-  autocmd InsertLeave * :call NumberToggle()
-  autocmd InsertEnter * :call NumberToggle()
-augroup END
 
 " Automatically resize splits when resizing MacVim window
 autocmd VimResized * wincmd =
@@ -455,14 +448,6 @@ function! PromoteToLet()
   :normal ==
 endfunction
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
 
 function! s:goyo_enter()
   if executable('tmux') && strlen($TMUX)
@@ -475,9 +460,6 @@ function! s:goyo_enter()
   set wrap
   set guifont=Menlo:h18
   Limelight
-  augroup NumberToggleOnInsert
-    autocmd!
-  augroup END
 endfunction
 
 function! s:goyo_leave()
@@ -491,11 +473,6 @@ function! s:goyo_leave()
   set nowrap
   set guifont=Hack:h14
   Limelight!
-  augroup NumberToggleOnInsert
-    autocmd!
-    autocmd InsertLeave * :call NumberToggle()
-    autocmd InsertEnter * :call NumberToggle()
-  augroup END
 endfunction
 
 " ======================================================== }}}
