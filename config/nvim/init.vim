@@ -28,7 +28,6 @@ Plug 'tpope/vim-liquid'
 Plug 'janko-m/vim-test'              " run test from vim
 Plug 'tpope/vim-dispatch'
 Plug 'neomake/neomake'               " runs make asynchronously in background
-Plug 'ngmy/vim-rubocop'
 Plug 'olalonde/jest-quickfix-reporter'
 Plug 'milkypostman/vim-togglelist'
 
@@ -97,31 +96,17 @@ Plug 'junegunn/limelight.vim'
 call plug#end()
 
 " Plug 'briandoll/change-inside-surroundings.vim'
-" Plug 'godlygeek/tabular'
-" Plug 'vim-scripts/camelcasemotion'
 " Plug 'kristijanhusak/vim-multiple-cursors'
 " Plug 'Keithbsmiley/investigate.vim'
-" Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'bogado/file-line'
-" Plug 'vim-scripts/AutoTag'
 " Plug 'vim-scripts/lastpos.vim'
-" Plug 'vim-scripts/sudo.vim'
-" Plug 'goldfeld/ctrlr.vim'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'mbbill/undotree'
 " Plug 'majutsushi/tagbar'
-" Plug 'kien/rainbow_parentheses.vim'
 " Plug 'Valloric/MatchTagAlways'
 " Plug 'EinfachToll/DidYouMean'
 " Plug 'chrisbra/csv.vim'
 " Plug 'ludovicchabant/vim-gutentags'
-" Plug 'dhruvasagar/vim-table-mode'
-" Plug 'mattn/webapi-vim'
-" Plug 'mzlogin/vim-markdown-toc'
-" Plug 'aklt/plantuml-syntax'
-" Plug 'AndrewRadev/sideways.vim'
-" Plug 'kassio/neoterm'
-" Plug 'janko-m/vim-test'
 
 " ======================================================== }}}
 " Setting {{{
@@ -691,11 +676,6 @@ call expand_region#custom_text_objects('ruby', {
       \ 'ir' :0,
       \ 'ar' :1,
       \ })
-
-" ======================================================== }}}
-" vim-rubocop {{{
-
-let g:vimrubocop_keymap = 0
 
 " ======================================================== }}}
 " vim-ruby {{{
