@@ -46,6 +46,7 @@ Plug 'tpope/vim-jdaddy'
 Plug 'dense-analysis/ale'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 " Search
 Plug '/usr/local/opt/fzf'
