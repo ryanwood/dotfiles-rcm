@@ -17,6 +17,7 @@ Plug 'roman/golden-ratio'
 " Git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 
 " Language/Syntax
@@ -258,10 +259,12 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gf :GV!<CR>
 nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gv :GV<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>
 
 nnoremap <leader>go :Goyo<CR>
