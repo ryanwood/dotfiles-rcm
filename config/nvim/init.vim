@@ -327,6 +327,7 @@ nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
 
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 " Manually source it, there is an autocmd below to do this automatically.
