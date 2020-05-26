@@ -47,6 +47,8 @@ Plug 'dense-analysis/ale'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'unblevable/quick-scope'
+Plug 'justinmk/vim-sneak'
 
 " Search
 Plug '/usr/local/opt/fzf'
@@ -772,6 +774,12 @@ endfunction
 let g:neomake_open_list = 2
 
 " ======================================================== }}}
+" quick-scope {{{
+
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" ======================================================== }}}
 " splitjoin {{{
 
 let g:splitjoin_ruby_curly_braces = 0
@@ -853,6 +861,15 @@ let b:switch_custom_definitions = [
       \   }
       \ ]
 
+" ======================================================== }}}
+" vim-sneak {{{
+
+" let g:sneak#label = 1
+
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
 
 " ======================================================== }}}
 " vim-test {{{
