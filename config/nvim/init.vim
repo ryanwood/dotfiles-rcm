@@ -210,7 +210,7 @@ nnoremap <leader>[ gT
 nnoremap <leader>\ :tabonly<Enter>
 " nmap <leader>' cs"'
 
-nmap <leader>; :%s/
+nmap <leader>; :%s//
 
 " Navigating tabs
 nnoremap <leader>1 1gt
