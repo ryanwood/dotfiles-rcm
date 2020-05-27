@@ -1,0 +1,16 @@
+{
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "ruby": ["ruby", "rails"],
+    "typescript": ["javascript"]
+  },
+  "solargraph.autoformat": true,
+  "solargraph.completion": true,
+  "solargraph.definitions": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "solargraph.references": true,
+  "solargraph.rename": true,
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "ruby"]
+}
