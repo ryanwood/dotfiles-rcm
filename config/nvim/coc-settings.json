@@ -12,5 +12,10 @@
   "solargraph.hover": true,
   "solargraph.references": true,
   "solargraph.rename": true,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "ruby"]
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "javascript",
+    "javascriptreact",
+    "markdown"
+  ]
 }
