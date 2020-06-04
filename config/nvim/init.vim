@@ -80,7 +80,6 @@ Plug 'AndrewRadev/multichange.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
-Plug 'AndrewRadev/tagalong.vim'
 Plug 'sickill/vim-pasta'
 Plug 'AndrewRadev/whitespaste.vim' " works with vim-pasta
 Plug 'AndrewRadev/undoquit.vim'
