@@ -399,10 +399,6 @@ map <Up> gk
 " Clear search result when hitting enter
 nnoremap <CR> :nohlsearch<BAR>:echo<CR><CR>
 
-" Use the tab key to navigate brackets; allow remap for matchit
-nmap <tab> %
-vmap <tab> %
-
 " Move visual block up/down with indentation
 xnoremap <C-j> :m'>+<CR>gv=gv
 xnoremap <C-k> :m-2<CR>gv=gv
