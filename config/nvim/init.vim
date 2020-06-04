@@ -157,7 +157,7 @@ set tabstop=2
 set timeoutlen=1000 ttimeoutlen=0 " Fix <shift-O> after <esc> delay https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set undofile                      " Set persistent undo file (location set by neovim)
 set updatetime=300                " [coc] Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
-set wildmode=list:longest
+set wildmode=list:longest,list:full
 set wildmenu                      " enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~       " stuff to ignore when tab completing
 set wildignore+=*vim/backups*
