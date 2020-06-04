@@ -353,6 +353,9 @@ nnoremap <leader>z zMzvzz
 " ======================================================== }}}
 " Non-Leader Mappings {{{
 
+" Fast <esc>
+inoremap jk <esc>
+
 " Start a search based on the visually-selected text
 vnoremap // y/<C-R>"<CR>
 
