@@ -356,6 +356,11 @@ nnoremap <leader>z zMzvzz
 " Fast <esc>
 inoremap jk <esc>
 
+" <c-u> in normal mode uppercases current word
+nnoremap <c-u> viwU
+" <c-u> in insert mode uppercases current word
+inoremap <c-u> <esc>viwUea
+
 " Start a search based on the visually-selected text
 vnoremap // y/<C-R>"<CR>
 
