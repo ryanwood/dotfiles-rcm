@@ -865,7 +865,7 @@ let b:switch_custom_definitions = [
 " ======================================================== }}}
 " vim-sneak {{{
 
-" let g:sneak#label = 1
+let g:sneak#label = 1
 
 " map f <Plug>Sneak_f
 " map F <Plug>Sneak_F
