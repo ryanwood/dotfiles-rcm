@@ -509,6 +509,7 @@ let g:ale_sign_error = '✗\ '
 let g:ale_sign_warning = '⚠\ '
 
 " fixer configurations
+let g:ale_linters_explicit = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'ruby': ['rubocop'],
