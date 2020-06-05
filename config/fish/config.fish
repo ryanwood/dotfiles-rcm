@@ -1,22 +1,7 @@
-# Set my editors to NeoVim
-set -gx EDITOR 'nvim'
-set -gx VISUAL 'nvim'
-
-# Set config location: https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
-set -gx RIPGREP_CONFIG_PATH $HOME/.ripgreprc
-
-# ensure dotfiles bin directory is loaded first
-set -gx PATH $HOME/.bin $PATH
-
-# Ensure Postgres 10 (keg only) is in the path
-set -gx PATH /usr/local/opt/postgresql@10/bin $PATH
 
 if status --is-interactive
   # rbenv
-  source (rbenv init -|psub)
-
-  # https://thoughtbot.com/blog/but-i-dont-want-to-bundle-exec
-  set -gx PATH .git/safe/../../bin $PATH
+  rbenv init - | source
 
   function l
     ls -la $argv
