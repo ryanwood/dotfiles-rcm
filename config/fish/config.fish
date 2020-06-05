@@ -18,15 +18,6 @@ if status --is-interactive
   # https://thoughtbot.com/blog/but-i-dont-want-to-bundle-exec
   set -gx PATH .git/safe/../../bin $PATH
 
-  # http://www.bellamangunsong.com/blog/ls-when-cd-with-fish/
-  function cd
-    if count $argv > /dev/null
-      builtin cd "$argv"; and ls
-    else
-      builtin cd ~; and ls
-    end
-  end
-
   function l
     ls -la $argv
   end
