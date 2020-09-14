@@ -1,5 +1,7 @@
 " VimPlug Initialization {{{
 
+let g:ale_disable_lsp = 1
+
 call plug#begin()
 
 " Appearance
@@ -111,7 +113,7 @@ call plug#end()
 " Setting {{{
 
 set clipboard=unnamed
-set cmdheight=2                   " [coc] Give more space for displaying messages.
+" set cmdheight=2                   " [coc] Give more space for displaying messages.
 set expandtab
 set foldmethod=syntax             " fold based on syntax
 set foldnestmax=10                " deepest fold is 3 levels
@@ -510,10 +512,11 @@ let g:ale_sign_warning = '⚠\ '
 
 " fixer configurations
 let g:ale_linters_explicit = 1
+let g:ale_linters = {'ruby': ['standardrb'], 'javascript': ['standard']}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'ruby': ['rubocop'],
-\   'slim': ['slim-lint'],
+\   'ruby': ['standardrb'],
+\   'javascript': ['standard']
 \}
 
 " ======================================================== }}}
@@ -570,27 +573,15 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-" Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-" if exists('*complete_info')
-"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-" else
-"   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" endif
-
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>ly <Plug>(coc-type-definition)
-nmap <silent> <leader>li <Plug>(coc-implementation)
-nmap <silent> <leader>lr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -607,7 +598,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>ln <Plug>(coc-rename)
+nmap <leader>lr <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -656,14 +647,9 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <leader>la  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>ld  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent> <leader>le  :<C-u>CocList extensions<cr>
 " Show commands.
