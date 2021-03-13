@@ -4,9 +4,5 @@
     "javascriptreact": ["javascript"],
     "ruby": ["ruby", "rails"],
     "typescript": ["javascript"]
-  },
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "markdown"
-  ]
+  }
 }

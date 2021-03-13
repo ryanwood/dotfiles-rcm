@@ -1,7 +1,6 @@
-" VimPlug Initialization {{{
-
 let g:ale_disable_lsp = 1
 
+" VimPlug Initialization {{{
 call plug#begin()
 
 " Appearance
@@ -14,6 +13,8 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-obsession'
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'itchyny/lightline.vim'
 Plug 'roman/golden-ratio'
 
@@ -27,6 +28,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-liquid'
+Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 
 " Testing
 Plug 'janko-m/vim-test'              " run test from vim
@@ -52,6 +54,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'unblevable/quick-scope'
 Plug 'justinmk/vim-sneak'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'jeetsukumaran/vim-indentwise'
 
 " Search
 Plug '/usr/local/opt/fzf'
@@ -80,12 +84,12 @@ Plug 'vim-scripts/matchit.zip'
 
 Plug 'AndrewRadev/deleft.vim'
 Plug 'AndrewRadev/dsf.vim'
-Plug 'AndrewRadev/multichange.vim'
+" Plug 'AndrewRadev/multichange.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'sickill/vim-pasta'
-Plug 'AndrewRadev/whitespaste.vim' " works with vim-pasta
+" Plug 'AndrewRadev/whitespaste.vim' " works with vim-pasta
 Plug 'AndrewRadev/undoquit.vim'
 
 Plug 'jiangmiao/auto-pairs'
@@ -135,7 +139,7 @@ set nowrap                        " Don't wrap lines
 set nowritebackup                 " [coc]
 set number                        " Line numbers are good
 set numberwidth=2                 " Use relative number except for the current line
-set re=1                          " Faster Ruby (use the older regex engine) - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
+set re=0                          " Changed back to 0 for tsx files to work. Previously 1 for Faster Ruby (use the older regex engine) - faster for Ruby files - https://stackoverflow.com/questions/16902317/vim-slow-with-ruby-syntax-highlighting
 set scrolloff=3                   " Start scrolling when we're X lines away from margins
 set shiftwidth=2
 set sidescroll=1                  " https://ddrscott.github.io/blog/2016/sidescroll/
@@ -254,10 +258,10 @@ nmap <leader>es :sp %%
 nmap <leader>ev :vsp %%
 nmap <leader>et :tabe %%
 
-" " format (align) the entire file
-" nnoremap <leader>fef :normal! gg=G``<CR>
-" " Full Zoom the current pane in a new tab. :wq to go back to the pane.
-" nnoremap <leader>fz :tabnew %<cr>
+" format (align) the entire file
+nnoremap <leader>fef :normal! gg=G``<CR>
+" Full Zoom the current pane in a new tab. :wq to go back to the pane.
+nnoremap <leader>fz :tabnew %<cr>
 
 " fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
@@ -284,9 +288,13 @@ nnoremap <leader>go :Goyo<CR>
 " buffergator: Go to the next buffer open
 " nmap <leader>k :BuffergatorMruCycleNext<cr>
 
+map <leader>nf :NERDTreeFind<cr>
+map <leader>nm :NERDTreeMirror<cr>
+map <leader>nt :NERDTreeToggle<cr>
+
 nnoremap <leader>o :Obsess<CR>
 " p for pretty
-nmap <Leader>p :ALEFix<CR>
+nmap <Leader>p :Prettier<CR>
 
 " Find in project
 nnoremap <leader>rg :Rg<space>
@@ -436,11 +444,11 @@ autocmd FileType yml setlocal commentstring=#\ %s
 " Trigger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " Notification after file change
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+" autocmd FileChangedShellPost *
+"   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 
 " Automatically resize splits when resizing MacVim window
@@ -453,6 +461,9 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 autocmd FileType elm setlocal shiftwidth=4 tabstop=4
+
+autocmd FileType eruby setlocal foldmethod=indent
+
 " ======================================================== }}}
 " Custom Functions {{{
 
@@ -514,12 +525,19 @@ let g:ale_sign_warning = '⚠\ '
 
 " fixer configurations
 let g:ale_linters_explicit = 1
-let g:ale_linters = {'ruby': ['standardrb'], 'javascript': ['standard']}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'ruby': ['standardrb'],
-\   'javascript': ['standard']
+let g:ale_linters = {
+      \ 'eruby': ['erb'],
+      \ 'ruby': ['standardrb'],
+      \ 'javascript': ['standard']
 \}
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'ruby': ['standardrb'],
+      \ 'javascript': ['standard']
+\}
+
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " ======================================================== }}}
 " auto-pairs {{{
@@ -676,7 +694,7 @@ let g:coc_snippet_next = '<tab>'
 " ======================================================== }}}
 " emmet-vim {{{
 
-" let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key=','
 
 " make emmet behave well with JSX in JS and TS files
 " let g:user_emmet_settings = {
@@ -811,9 +829,7 @@ call expand_region#custom_text_objects('ruby', {
 " ======================================================== }}}
 " vim-ruby {{{
 
-let g:ruby_indent_access_modifier_style = 'outdent'
 let g:ruby_indent_assignment_style = 'variable'
-let g:ruby_indent_block_style = 'do'
 
 " ======================================================== }}}
 " sideways.vim {{{

@@ -3,3 +3,4 @@ vim/sessions
 vim/backups
 vim/.netrwhist
 vim/view
+.DS_Store
